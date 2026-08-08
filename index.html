@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               user-scalable=no">
 
-<title>Birthday Surprise | 15.09.2007</title>
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
+
+<title>Birthday Surprise</title>
 
 <style>
 
-/* =====================================================
+/* =========================
    RESET
-===================================================== */
+========================= */
 
 *{
     margin:0;
@@ -23,66 +24,43 @@
     -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
     width:100%;
     min-height:100%;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
+    font-family:Georgia,"Times New Roman",serif;
     background:#050008;
-
     color:white;
-
     overflow:hidden;
 }
 
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+/* =========================
+   COLORS
+========================= */
 
 :root{
-
     --purple:#a855f7;
-
     --lightPurple:#ead7ff;
-
     --darkPurple:#6b21a8;
-
-    --deepPurple:#2b1245;
-
-    --black:#030003;
 }
 
 
-/* =====================================================
+/* =========================
    SECTION
-===================================================== */
+========================= */
 
 section{
-
     width:100%;
-
-    min-height:100dvh;
-
     height:100dvh;
+    min-height:100dvh;
 
     display:none;
 
     justify-content:center;
-
     align-items:center;
-
     flex-direction:column;
 
     text-align:center;
@@ -91,17 +69,15 @@ section{
 
     overflow:hidden;
 
-    padding:
-        20px
-        16px;
+    padding:20px 16px;
 
     background:
-        radial-gradient(
-            circle at center,
-            #2b1245 0%,
-            #100719 45%,
-            #020003 100%
-        );
+    radial-gradient(
+        circle at center,
+        #2b1245 0%,
+        #100719 45%,
+        #020003 100%
+    );
 }
 
 section.active{
@@ -109,33 +85,27 @@ section.active{
 }
 
 
-/* Purple background glow */
+/* =========================
+   BACKGROUND GLOW
+========================= */
 
 section::before{
-
     content:"";
 
     position:absolute;
 
-    width:
-        min(90vw,500px);
-
-    height:
-        min(90vw,500px);
+    width:min(90vw,500px);
+    height:min(90vw,500px);
 
     border-radius:50%;
 
-    background:
-        #a855f725;
+    background:#a855f725;
 
     filter:blur(90px);
 
-    animation:
-        purpleLight 5s
-        infinite alternate;
+    animation:purpleLight 5s infinite alternate;
 
     pointer-events:none;
-
 }
 
 @keyframes purpleLight{
@@ -149,35 +119,29 @@ section::before{
         transform:scale(1.3);
         opacity:.8;
     }
-
 }
 
 
-/* =====================================================
-   PARTICLES
-===================================================== */
+/* =========================
+   STARS
+========================= */
 
 .star{
-
     position:fixed;
 
     width:3px;
-
     height:3px;
 
     border-radius:50%;
 
-    background:
-        var(--purple);
+    background:var(--purple);
 
     box-shadow:
-        0 0 7px var(--purple),
-        0 0 15px var(--lightPurple);
+    0 0 7px var(--purple),
+    0 0 15px var(--lightPurple);
 
     animation:
-        starAnimation
-        4s
-        infinite alternate;
+    starAnimation 4s infinite alternate;
 
     z-index:0;
 
@@ -187,39 +151,35 @@ section::before{
 @keyframes starAnimation{
 
     from{
-
         transform:
-            translateY(0)
-            scale(.5);
+        translateY(0)
+        scale(.5);
 
         opacity:.2;
     }
 
     to{
-
         transform:
-            translateY(-40px)
-            scale(1.5);
+        translateY(-40px)
+        scale(1.5);
 
         opacity:1;
     }
-
 }
 
 
-/* =====================================================
-   🔐 LOGIN
-===================================================== */
+/* =========================
+   LOGIN
+========================= */
 
 #login{
-
     background:
-        radial-gradient(
-            circle,
-            #32104d,
-            #0b0012 50%,
-            #000 100%
-        );
+    radial-gradient(
+        circle,
+        #32104d,
+        #0b0012 50%,
+        #000 100%
+    );
 }
 
 .login-box{
@@ -228,54 +188,43 @@ section::before{
 
     z-index:5;
 
-    width:
-        min(92vw,390px);
+    width:min(92vw,390px);
 
-    max-height:
-        calc(100dvh - 30px);
+    max-height:calc(100dvh - 30px);
 
     padding:
-        clamp(20px,5vw,40px)
-        18px;
+    clamp(20px,5vw,40px)
+    18px;
 
     background:
-        linear-gradient(
-            145deg,
-            #19111f,
-            #050008
-        );
+    linear-gradient(
+        145deg,
+        #19111f,
+        #050008
+    );
 
     border:
-        1px solid
-        var(--purple);
+    1px solid var(--purple);
 
     border-radius:24px;
 
     box-shadow:
-        0 0 15px #a855f755,
-        0 0 45px #a855f733;
-
-    overflow:hidden;
+    0 0 15px #a855f755,
+    0 0 45px #a855f733;
 }
-
-
-/* Lock */
 
 .lock{
 
     font-size:
-        clamp(45px,13vw,70px);
+    clamp(45px,13vw,70px);
 
     filter:
-        drop-shadow(
-            0 0 15px
-            var(--purple)
-        );
+    drop-shadow(
+        0 0 15px var(--purple)
+    );
 
     animation:
-        lockGlow
-        2s
-        infinite alternate;
+    lockGlow 2s infinite alternate;
 }
 
 @keyframes lockGlow{
@@ -283,48 +232,41 @@ section::before{
     to{
         transform:scale(1.1);
     }
-
 }
-
 
 .login-box h1{
 
-    margin:
-        8px 0;
+    margin:8px 0;
 
     font-size:
-        clamp(28px,8vw,40px);
+    clamp(28px,8vw,40px);
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     text-shadow:
-        0 0 10px var(--purple),
-        0 0 25px #a855f766;
+    0 0 10px var(--purple),
+    0 0 25px #a855f766;
 }
 
 .login-box p{
     color:#d7d0dd;
 
     font-size:
-        clamp(13px,4vw,16px);
+    clamp(13px,4vw,16px);
 }
 
 
-/* =====================================================
-   PASSWORD DISPLAY
-===================================================== */
+/* =========================
+   PASSWORD
+========================= */
 
 #display{
 
-    width:
-        min(100%,280px);
+    width:min(100%,280px);
 
-    margin:
-        18px auto;
+    margin:18px auto;
 
-    padding:
-        12px 8px;
+    padding:12px 8px;
 
     min-height:48px;
 
@@ -337,43 +279,40 @@ section::before{
     background:#000;
 
     border:
-        1px solid
-        var(--purple);
+    1px solid var(--purple);
 
     border-radius:12px;
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     font-size:
-        clamp(17px,5vw,22px);
+    clamp(17px,5vw,22px);
 
     letter-spacing:
-        clamp(3px,2vw,6px);
+    clamp(3px,2vw,6px);
 
     box-shadow:
-        0 0 15px #a855f744;
+    0 0 15px #a855f744;
 }
 
 
-/* =====================================================
+/* =========================
    KEYPAD
-===================================================== */
+========================= */
 
 .keypad{
 
-    width:
-        min(100%,280px);
+    width:min(100%,280px);
 
     margin:auto;
 
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+    repeat(3,1fr);
 
     gap:
-        clamp(7px,2.5vw,12px);
+    clamp(7px,2.5vw,12px);
 }
 
 .keypad button{
@@ -387,23 +326,21 @@ section::before{
     max-height:62px;
 
     border:
-        1px solid
-        #a855f777;
+    1px solid #a855f777;
 
     border-radius:11px;
 
     background:
-        linear-gradient(
-            145deg,
-            #19131e,
-            #050008
-        );
+    linear-gradient(
+        145deg,
+        #19131e,
+        #050008
+    );
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     font-size:
-        clamp(17px,5vw,21px);
+    clamp(17px,5vw,21px);
 
     font-weight:bold;
 
@@ -411,37 +348,25 @@ section::before{
 
     touch-action:manipulation;
 
-    transition:
-        transform .15s,
-        background .2s,
-        box-shadow .2s;
-}
-
-.keypad button:hover{
-
-    background:
-        linear-gradient(
-            145deg,
-            #a855f7,
-            #6b21a8
-        );
-
-    color:white;
-
-    box-shadow:
-        0 0 20px
-        var(--purple);
+    transition:.15s;
 }
 
 .keypad button:active{
 
     transform:scale(.92);
+
+    background:
+    linear-gradient(
+        145deg,
+        #a855f7,
+        #6b21a8
+    );
 }
 
 
-/* =====================================================
-   OPENING DATE
-===================================================== */
+/* =========================
+   DATE
+========================= */
 
 .date{
 
@@ -452,29 +377,22 @@ section::before{
     max-width:100%;
 
     font-size:
-        clamp(
-            38px,
-            11vw,
-            100px
-        );
+    clamp(38px,11vw,100px);
 
     letter-spacing:
-        clamp(2px,2vw,8px);
+    clamp(2px,2vw,8px);
 
     font-weight:bold;
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     text-shadow:
-        0 0 10px var(--purple),
-        0 0 30px var(--purple),
-        0 0 60px #a855f766;
+    0 0 10px var(--purple),
+    0 0 30px var(--purple),
+    0 0 60px #a855f766;
 
     animation:
-        dateGlow
-        2s
-        infinite alternate;
+    dateGlow 2s infinite alternate;
 }
 
 @keyframes dateGlow{
@@ -482,7 +400,6 @@ section::before{
     to{
         transform:scale(1.05);
     }
-
 }
 
 .openText{
@@ -490,12 +407,12 @@ section::before{
     margin-top:15px;
 
     font-size:
-        clamp(13px,4vw,18px);
+    clamp(13px,4vw,18px);
 
     color:#ddd;
 
     animation:
-        blink 1.5s infinite;
+    blink 1.5s infinite;
 }
 
 @keyframes blink{
@@ -503,13 +420,12 @@ section::before{
     50%{
         opacity:.35;
     }
-
 }
 
 
-/* =====================================================
+/* =========================
    BUTTONS
-===================================================== */
+========================= */
 
 .startBtn,
 .nextBtn{
@@ -522,27 +438,24 @@ section::before{
 
     min-height:48px;
 
-    padding:
-        12px
-        24px;
+    padding:12px 24px;
 
     border:
-        1px solid
-        var(--purple);
+    1px solid var(--purple);
 
     border-radius:30px;
 
     background:
-        linear-gradient(
-            135deg,
-            #a855f7,
-            #6b21a8
-        );
+    linear-gradient(
+        135deg,
+        #a855f7,
+        #6b21a8
+    );
 
     color:white;
 
     font-size:
-        clamp(14px,4vw,17px);
+    clamp(14px,4vw,17px);
 
     font-weight:bold;
 
@@ -551,9 +464,7 @@ section::before{
     touch-action:manipulation;
 
     box-shadow:
-        0 0 15px #a855f766;
-
-    transition:.25s;
+    0 0 15px #a855f766;
 }
 
 .startBtn:active,
@@ -563,9 +474,9 @@ section::before{
 }
 
 
-/* =====================================================
-   🎁 GIFT
-===================================================== */
+/* =========================
+   GIFT
+========================= */
 
 .giftBox{
 
@@ -574,62 +485,49 @@ section::before{
     z-index:2;
 
     font-size:
-        clamp(
-            90px,
-            30vw,
-            145px
-        );
+    clamp(90px,30vw,145px);
 
     cursor:pointer;
 
     filter:
-        drop-shadow(
-            0 0 25px
-            var(--purple)
-        );
+    drop-shadow(
+        0 0 25px var(--purple)
+    );
 
     animation:
-        giftBounce
-        1.5s
-        infinite;
+    giftBounce 1.5s infinite;
 }
 
 @keyframes giftBounce{
 
     50%{
         transform:
-            translateY(-15px)
-            rotate(4deg);
+        translateY(-15px)
+        rotate(4deg);
     }
-
 }
 
 .giftBox.open{
 
     animation:
-        giftOpen
-        1s
-        forwards;
+    giftOpen 1s forwards;
 }
 
 @keyframes giftOpen{
 
     50%{
-
         transform:
-            scale(1.3)
-            rotate(-10deg);
+        scale(1.3)
+        rotate(-10deg);
     }
 
     100%{
-
         transform:
-            scale(0)
-            rotate(30deg);
+        scale(0)
+        rotate(30deg);
 
         opacity:0;
     }
-
 }
 
 .giftTitle{
@@ -637,20 +535,18 @@ section::before{
     margin-top:15px;
 
     font-size:
-        clamp(27px,7vw,38px);
+    clamp(27px,7vw,38px);
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     text-shadow:
-        0 0 20px
-        var(--purple);
+    0 0 20px var(--purple);
 }
 
 
-/* =====================================================
+/* =========================
    SECTION TITLE
-===================================================== */
+========================= */
 
 .sectionTitle{
 
@@ -661,27 +557,23 @@ section::before{
     width:100%;
 
     font-size:
-        clamp(
-            26px,
-            7vw,
-            48px
-        );
+    clamp(26px,7vw,48px);
 
     margin-bottom:
-        clamp(18px,4vw,30px);
+    clamp(18px,4vw,30px);
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     text-shadow:
-        0 0 10px var(--purple),
-        0 0 25px #a855f755;
+    0 0 10px var(--purple),
+    0 0 25px #a855f755;
 }
 
 
-/* =====================================================
-   📸 PHOTO GRID
-===================================================== */
+/* ==================================================
+   📸 PHOTO SECTION
+   PHOTO SIZE ONLY CHANGED
+================================================== */
 
 .photoGrid{
 
@@ -694,58 +586,59 @@ section::before{
     display:grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(
-                120px,
-                190px
-            )
-        );
+    repeat(
+        auto-fit,
+        minmax(160px,210px)
+    );
 
     justify-content:center;
 
     gap:
-        clamp(10px,3vw,25px);
+    clamp(14px,4vw,25px);
 
-    max-height:
-        58vh;
+    max-height:58vh;
 
     overflow:auto;
 
-    padding:5px;
+    padding:8px;
 }
+
+
+/* PHOTO CARD */
 
 .photoCard{
 
-    width:100%;
+    width:180px;
 
-    aspect-ratio:
-        4 / 5;
+    height:230px;
 
     padding:3px;
 
     border-radius:17px;
 
     background:
-        linear-gradient(
-            45deg,
-            #6b21a8,
-            #e9d5ff,
-            #a855f7,
-            #6b21a8
-        );
+    linear-gradient(
+        45deg,
+        #6b21a8,
+        #e9d5ff,
+        #a855f7,
+        #6b21a8
+    );
 
-    background-size:
-        400% 400%;
+    background-size:400% 400%;
 
     animation:
-        purpleBorder 4s infinite,
-        photoFloat 3s infinite
-        ease-in-out;
+    purpleBorder 4s infinite,
+    photoFloat 3s infinite ease-in-out;
 
     box-shadow:
-        0 0 20px #a855f766;
+    0 0 20px #a855f766;
+
+    overflow:hidden;
 }
+
+
+/* PHOTO */
 
 .photoCard img{
 
@@ -755,93 +648,41 @@ section::before{
 
     display:block;
 
-    object-fit:cover;
+    /*
+       IMPORTANT
+       PHOTO CROP AAGAATHU
+    */
+
+    object-fit:contain;
+
+    object-position:center;
+
+    background:#050008;
 
     border-radius:14px;
-
-    background:#111;
 }
 
 @keyframes purpleBorder{
 
     50%{
         background-position:
-            100% 50%;
+        100% 50%;
     }
-
 }
 
 @keyframes photoFloat{
 
     50%{
         transform:
-            translateY(-8px)
-            rotate(1deg);
+        translateY(-8px)
+        rotate(1deg);
     }
-
 }
 
 
-/* =====================================================
-   🎂 CAKE
-===================================================== */
-
-.cake{
-
-    position:relative;
-
-    z-index:2;
-
-    font-size:
-        clamp(
-            90px,
-            30vw,
-            150px
-        );
-
-    cursor:pointer;
-
-    filter:
-        drop-shadow(
-            0 0 25px
-            var(--purple)
-        );
-
-    animation:
-        cakeFloat
-        2s
-        infinite
-        ease-in-out;
-}
-
-@keyframes cakeFloat{
-
-    50%{
-        transform:
-            translateY(-12px);
-    }
-
-}
-
-.candleText{
-
-    max-width:
-        90vw;
-
-    color:#ddd;
-
-    line-height:1.7;
-
-    margin-top:15px;
-
-    font-size:
-        clamp(13px,4vw,17px);
-}
-
-
-/* =====================================================
-   ✨ FLASH
-===================================================== */
+/* =========================
+   FLASH
+========================= */
 
 .flash{
 
@@ -850,12 +691,12 @@ section::before{
     inset:0;
 
     background:
-        radial-gradient(
-            circle,
-            white,
-            #ead7ff,
-            #a855f7
-        );
+    radial-gradient(
+        circle,
+        white,
+        #ead7ff,
+        #a855f7
+    );
 
     z-index:500;
 
@@ -867,8 +708,7 @@ section::before{
 .flash.show{
 
     animation:
-        flashAnimation
-        .8s;
+    flashAnimation .8s;
 }
 
 @keyframes flashAnimation{
@@ -884,13 +724,12 @@ section::before{
     100%{
         opacity:0;
     }
-
 }
 
 
-/* =====================================================
-   👶 CHILDHOOD
-===================================================== */
+/* =========================
+   CHILDHOOD
+========================= */
 
 .timeline{
 
@@ -898,11 +737,9 @@ section::before{
 
     z-index:2;
 
-    width:
-        min(94vw,850px);
+    width:min(94vw,850px);
 
-    max-height:
-        62vh;
+    max-height:62vh;
 
     display:flex;
 
@@ -928,24 +765,22 @@ section::before{
     padding:12px;
 
     background:
-        linear-gradient(
-            135deg,
-            #17121c,
-            #080509
-        );
+    linear-gradient(
+        135deg,
+        #17121c,
+        #080509
+    );
 
     border:
-        1px solid
-        #a855f766;
+    1px solid #a855f766;
 
     border-radius:18px;
 
     box-shadow:
-        0 0 20px #a855f722;
+    0 0 20px #a855f722;
 
     animation:
-        memorySlide
-        1s ease;
+    memorySlide 1s ease;
 
     flex-shrink:0;
 }
@@ -953,20 +788,21 @@ section::before{
 .memory img{
 
     width:
-        clamp(95px,25vw,140px);
+    clamp(100px,25vw,145px);
 
     height:
-        clamp(95px,25vw,140px);
+    clamp(100px,25vw,145px);
 
     flex-shrink:0;
 
-    object-fit:cover;
+    object-fit:contain;
+
+    background:#050008;
 
     border-radius:13px;
 
     border:
-        2px solid
-        var(--purple);
+    2px solid var(--purple);
 }
 
 .memory p{
@@ -974,7 +810,7 @@ section::before{
     color:#ddd;
 
     font-size:
-        clamp(13px,4vw,18px);
+    clamp(13px,4vw,18px);
 
     line-height:1.5;
 
@@ -984,27 +820,24 @@ section::before{
 @keyframes memorySlide{
 
     from{
-
         opacity:0;
 
         transform:
-            translateX(-80px);
+        translateX(-80px);
     }
 
     to{
-
         opacity:1;
 
         transform:
-            translateX(0);
+        translateX(0);
     }
-
 }
 
 
-/* =====================================================
-   👬 FRIENDS
-===================================================== */
+/* =========================
+   FRIENDS
+========================= */
 
 .friendGrid{
 
@@ -1017,21 +850,17 @@ section::before{
     display:grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(
-                130px,
-                200px
-            )
-        );
+    repeat(
+        auto-fit,
+        minmax(145px,200px)
+    );
 
     justify-content:center;
 
     gap:
-        clamp(10px,3vw,20px);
+    clamp(10px,3vw,20px);
 
-    max-height:
-        58vh;
+    max-height:58vh;
 
     overflow:auto;
 
@@ -1047,19 +876,15 @@ section::before{
     background:#111;
 
     border:
-        1px solid
-        #a855f777;
+    1px solid #a855f777;
 
     border-radius:18px;
 
     animation:
-        friendFloat
-        3s
-        infinite
-        alternate;
+    friendFloat 3s infinite alternate;
 
     box-shadow:
-        0 0 15px #a855f722;
+    0 0 15px #a855f722;
 }
 
 .friendCard img{
@@ -1070,24 +895,24 @@ section::before{
 
     display:block;
 
-    object-fit:cover;
+    object-fit:contain;
+
+    background:#050008;
 
     border-radius:13px;
 
     border:
-        1px solid
-        var(--purple);
+    1px solid var(--purple);
 }
 
 .friendCard p{
 
     margin-top:8px;
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     font-size:
-        clamp(12px,3.5vw,16px);
+    clamp(12px,3.5vw,16px);
 }
 
 @keyframes friendFloat{
@@ -1095,19 +920,18 @@ section::before{
     to{
 
         transform:
-            translateY(-8px)
-            rotate(1deg);
+        translateY(-8px)
+        rotate(1deg);
 
         box-shadow:
-            0 0 25px #a855f766;
+        0 0 25px #a855f766;
     }
-
 }
 
 
-/* =====================================================
-   💬 QUOTES
-===================================================== */
+/* =========================
+   QUOTES
+========================= */
 
 .quoteBox{
 
@@ -1115,14 +939,13 @@ section::before{
 
     z-index:2;
 
-    width:
-        min(92vw,700px);
+    width:min(92vw,700px);
 
     min-height:
-        clamp(150px,35vh,220px);
+    clamp(150px,35vh,220px);
 
     padding:
-        clamp(20px,6vw,35px);
+    clamp(20px,6vw,35px);
 
     display:flex;
 
@@ -1131,43 +954,40 @@ section::before{
     align-items:center;
 
     background:
-        linear-gradient(
-            145deg,
-            #17121c,
-            #070509
-        );
+    linear-gradient(
+        145deg,
+        #17121c,
+        #070509
+    );
 
     border:
-        1px solid
-        var(--purple);
+    1px solid var(--purple);
 
     border-radius:22px;
 
     box-shadow:
-        0 0 30px #a855f733;
+    0 0 30px #a855f733;
 }
 
 .quote{
 
     font-size:
-        clamp(18px,5vw,25px);
+    clamp(18px,5vw,25px);
 
     line-height:1.6;
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     border-right:
-        3px solid
-        var(--purple);
+    3px solid var(--purple);
 
     padding-right:4px;
 }
 
 
-/* =====================================================
-   🏍️ BIKE PHOTO
-===================================================== */
+/* =========================
+   BIKE
+========================= */
 
 .bikePhoto{
 
@@ -1175,24 +995,9 @@ section::before{
 
     z-index:2;
 
-    /*
-       MOBILE WIDTH
-    */
+    width:min(94vw,700px);
 
-    width:
-        min(94vw,700px);
-
-    /*
-       MOBILE HEIGHT
-    */
-
-    height:
-        min(58vh,650px);
-
-    /*
-       FULL PHOTO
-       FACE CROP AAGAATHU
-    */
+    height:min(58vh,650px);
 
     object-fit:contain;
 
@@ -1201,24 +1006,16 @@ section::before{
     padding:5px;
 
     border:
-        3px solid
-        var(--purple);
+    3px solid var(--purple);
 
     border-radius:20px;
 
     box-shadow:
-
-        0 0 20px
-        var(--purple),
-
-        0 0 55px
-        #a855f744;
+    0 0 20px var(--purple),
+    0 0 55px #a855f744;
 
     animation:
-        bikeAnimation
-        4s
-        infinite
-        alternate;
+    bikeAnimation 4s infinite alternate;
 }
 
 @keyframes bikeAnimation{
@@ -1228,20 +1025,15 @@ section::before{
         transform:scale(1.025);
 
         box-shadow:
-
-            0 0 35px
-            var(--purple),
-
-            0 0 70px
-            #a855f744;
+        0 0 35px var(--purple),
+        0 0 70px #a855f744;
     }
-
 }
 
 
-/* =====================================================
-   💜 FINAL
-===================================================== */
+/* =========================
+   FINAL
+========================= */
 
 .finalTitle{
 
@@ -1252,20 +1044,12 @@ section::before{
     max-width:100%;
 
     font-size:
-        clamp(
-            35px,
-            10vw,
-            80px
-        );
+    clamp(35px,10vw,80px);
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     animation:
-        finalGlow
-        2s
-        infinite
-        alternate;
+    finalGlow 2s infinite alternate;
 }
 
 @keyframes finalGlow{
@@ -1273,17 +1057,10 @@ section::before{
     to{
 
         text-shadow:
-
-            0 0 20px
-            var(--purple),
-
-            0 0 50px
-            var(--purple),
-
-            0 0 90px
-            #a855f766;
+        0 0 20px var(--purple),
+        0 0 50px var(--purple),
+        0 0 90px #a855f766;
     }
-
 }
 
 .finalDate{
@@ -1295,20 +1072,12 @@ section::before{
     margin-top:18px;
 
     font-size:
-        clamp(
-            30px,
-            9vw,
-            45px
-        );
+    clamp(30px,9vw,45px);
 
-    color:
-        var(--lightPurple);
+    color:var(--lightPurple);
 
     animation:
-        datePulse
-        2s
-        infinite
-        alternate;
+    datePulse 2s infinite alternate;
 }
 
 @keyframes datePulse{
@@ -1318,10 +1087,8 @@ section::before{
         transform:scale(1.08);
 
         text-shadow:
-            0 0 30px
-            var(--purple);
+        0 0 30px var(--purple);
     }
-
 }
 
 .finalMessage{
@@ -1330,13 +1097,12 @@ section::before{
 
     z-index:2;
 
-    max-width:
-        90vw;
+    max-width:90vw;
 
     margin-top:20px;
 
     font-size:
-        clamp(15px,4.5vw,20px);
+    clamp(15px,4.5vw,20px);
 
     line-height:1.8;
 
@@ -1344,9 +1110,9 @@ section::before{
 }
 
 
-/* =====================================================
-   💜 HEARTS
-===================================================== */
+/* =========================
+   HEARTS
+========================= */
 
 .heart{
 
@@ -1355,17 +1121,14 @@ section::before{
     bottom:-50px;
 
     font-size:
-        clamp(20px,6vw,30px);
+    clamp(20px,6vw,30px);
 
     z-index:300;
 
     pointer-events:none;
 
     animation:
-        heartUp
-        6s
-        linear
-        forwards;
+    heartUp 6s linear forwards;
 }
 
 @keyframes heartUp{
@@ -1373,8 +1136,8 @@ section::before{
     0%{
 
         transform:
-            translateY(0)
-            scale(.5);
+        translateY(0)
+        scale(.5);
 
         opacity:0;
     }
@@ -1386,19 +1149,18 @@ section::before{
     100%{
 
         transform:
-            translateY(-110vh)
-            scale(1.5)
-            rotate(30deg);
+        translateY(-110vh)
+        scale(1.5)
+        rotate(30deg);
 
         opacity:0;
     }
-
 }
 
 
-/* =====================================================
-   ✨ CONFETTI
-===================================================== */
+/* =========================
+   CONFETTI
+========================= */
 
 .confetti{
 
@@ -1412,14 +1174,10 @@ section::before{
 
     z-index:400;
 
-    background:
-        var(--purple);
+    background:var(--purple);
 
     animation:
-        confettiFall
-        3s
-        linear
-        forwards;
+    confettiFall 3s linear forwards;
 }
 
 @keyframes confettiFall{
@@ -1427,104 +1185,121 @@ section::before{
     to{
 
         transform:
-            translateY(110vh)
-            rotate(720deg);
+        translateY(110vh)
+        rotate(720deg);
 
         opacity:0;
     }
-
 }
 
 
-/* =====================================================
-   📱 SMALL PHONES
-===================================================== */
+/* ==================================================
+   📱 MOBILE PHOTO SIZE
+================================================== */
+
+@media(max-width:600px){
+
+    .photoGrid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+        width:100%;
+
+        max-width:390px;
+
+        gap:10px;
+
+        max-height:58vh;
+    }
+
+    .photoCard{
+
+        width:100%;
+
+        height:210px;
+    }
+
+    .photoCard img{
+
+        width:100%;
+
+        height:100%;
+
+        object-fit:contain;
+    }
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
 
 @media(max-width:380px){
 
     section{
-
-        padding:
-            14px
-            10px;
+        padding:14px 10px;
     }
 
     .login-box{
-
-        padding:
-            18px
-            12px;
+        padding:18px 12px;
     }
 
     #display{
-
-        margin:
-            12px auto;
+        margin:12px auto;
     }
 
     .keypad{
-
         gap:6px;
     }
 
     .keypad button{
-
         min-height:44px;
-
         font-size:17px;
     }
 
     .sectionTitle{
-
         margin-bottom:15px;
     }
 
     .photoGrid{
 
         grid-template-columns:
-            repeat(2,1fr);
+        repeat(2,1fr);
 
-        max-width:300px;
+        max-width:330px;
+
+        gap:8px;
     }
 
-    .friendGrid{
+    .photoCard{
 
-        grid-template-columns:
-            repeat(2,1fr);
-
-        max-width:310px;
+        height:185px;
     }
 
     .memory{
-
         gap:10px;
-
         padding:8px;
     }
 
     .memory img{
-
         width:85px;
-
         height:85px;
     }
 
     .memory p{
-
         font-size:12px;
     }
 
     .bikePhoto{
-
         height:55vh;
     }
-
 }
 
 
-/* =====================================================
-   📱 LANDSCAPE PHONE
-===================================================== */
+/* =========================
+   LANDSCAPE
+========================= */
 
 @media(
     max-height:500px
@@ -1533,93 +1308,49 @@ section::before{
 ){
 
     section{
-
-        padding:
-            10px;
+        padding:10px;
     }
 
     .login-box{
-
-        padding:
-            12px;
-
-        max-height:
-            96dvh;
+        padding:12px;
+        max-height:96dvh;
     }
 
     .lock{
-
         font-size:35px;
     }
 
     .login-box h1{
-
         font-size:25px;
     }
 
     #display{
-
-        margin:
-            8px auto;
-
+        margin:8px auto;
         padding:7px;
     }
 
     .keypad{
-
         max-width:240px;
-
         gap:5px;
     }
 
     .keypad button{
-
         min-height:35px;
-
         max-height:42px;
     }
 
     .sectionTitle{
-
         margin-bottom:8px;
-
         font-size:26px;
     }
 
-    .bikePhoto{
+    .photoCard{
+        height:170px;
+    }
 
+    .bikePhoto{
         height:58vh;
     }
-
-}
-
-
-/* =====================================================
-   TOUCH DEVICES
-===================================================== */
-
-@media(hover:none){
-
-    .keypad button:hover{
-
-        background:
-            linear-gradient(
-                145deg,
-                #19131e,
-                #050008
-            );
-
-        box-shadow:none;
-
-        transform:none;
-    }
-
-    .startBtn:active,
-    .nextBtn:active{
-
-        transform:scale(.94);
-    }
-
 }
 
 </style>
@@ -1629,9 +1360,9 @@ section::before{
 <body>
 
 
-<!-- =====================================================
-     🔐 LOGIN
-===================================================== -->
+<!-- ==================================================
+     LOGIN
+================================================== -->
 
 <section id="login" class="active">
 
@@ -1707,22 +1438,14 @@ section::before{
 
         <p id="loginError"></p>
 
-        <p style="
-            margin-top:12px;
-            font-size:12px;
-            color:#b98ce8;
-        ">
-            ✨ A special date is waiting...
-        </p>
-
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     ✨ OPENING
-===================================================== -->
+<!-- ==================================================
+     OPENING
+================================================== -->
 
 <section id="opening">
 
@@ -1735,8 +1458,8 @@ section::before{
     </p>
 
     <button
-        class="startBtn"
-        onclick="openGift()">
+    class="startBtn"
+    onclick="openGift()">
 
         🎁 OPEN THE SURPRISE
 
@@ -1745,16 +1468,16 @@ section::before{
 </section>
 
 
-<!-- =====================================================
-     🎁 GIFT
-===================================================== -->
+<!-- ==================================================
+     GIFT
+================================================== -->
 
 <section id="gift">
 
     <div
-        id="giftBox"
-        class="giftBox"
-        onclick="openBirthday()">
+    id="giftBox"
+    class="giftBox"
+    onclick="openBirthday()">
 
         🎁
 
@@ -1765,19 +1488,20 @@ section::before{
     </h1>
 
     <p style="
-        margin-top:12px;
-        color:#bbb;
-        font-size:14px;
-    ">
+    margin-top:12px;
+    color:#bbb;
+    font-size:14px;">
+
         Something special is waiting inside... ✨
+
     </p>
 
 </section>
 
 
-<!-- =====================================================
-     📸 PHOTO REVEAL
-===================================================== -->
+<!-- ==================================================
+     PHOTOS
+================================================== -->
 
 <section id="photos">
 
@@ -1790,40 +1514,43 @@ section::before{
         <div class="photoCard">
 
             <img
-                src="./photo1.jpg"
-                alt="Birthday Photo">
+            src="./photo1.jpg"
+            alt="Birthday Photo">
 
         </div>
+
 
         <div class="photoCard">
 
             <img
-                src="./photo2.jpg"
-                alt="Memory Photo">
+            src="./photo2.jpg"
+            alt="Memory Photo">
 
         </div>
+
 
         <div class="photoCard">
 
             <img
-                src="./photo3.jpg"
-                alt="Memory Photo">
+            src="./photo3.jpg"
+            alt="Memory Photo">
 
         </div>
 
     </div>
 
     <p style="
-        margin-top:15px;
-        color:#bbb;
-        font-size:14px;
-    ">
+    margin-top:15px;
+    color:#bbb;
+    font-size:14px;">
+
         ✨ Every picture has a story
+
     </p>
 
     <button
-        class="nextBtn"
-        onclick="showSection('cake')">
+    class="nextBtn"
+    onclick="showSection('cake')">
 
         Next → 🎂
 
@@ -1832,9 +1559,9 @@ section::before{
 </section>
 
 
-<!-- =====================================================
-     🎂 CAKE
-===================================================== -->
+<!-- ==================================================
+     CAKE
+================================================== -->
 
 <section id="cake">
 
@@ -1843,9 +1570,9 @@ section::before{
     </h1>
 
     <div
-        id="cakeEmoji"
-        class="cake"
-        onclick="turnOffCandle()">
+    id="cakeEmoji"
+    class="cake"
+    onclick="turnOffCandle()">
 
         🕯️🎂🕯️
 
@@ -1865,17 +1592,15 @@ section::before{
 </section>
 
 
-<!-- FLASH -->
-
 <div
-    id="flash"
-    class="flash">
+id="flash"
+class="flash">
 </div>
 
 
-<!-- =====================================================
-     👶 CHILDHOOD
-===================================================== -->
+<!-- ==================================================
+     CHILDHOOD
+================================================== -->
 
 <section id="childhood">
 
@@ -1888,10 +1613,11 @@ section::before{
         <div class="memory">
 
             <img
-                src="./childhood1.jpg"
-                alt="Childhood">
+            src="./childhood1.jpg"
+            alt="Childhood">
 
             <p>
+
                 👶 Little moments,
                 big memories.
 
@@ -1899,41 +1625,49 @@ section::before{
 
                 ✨ The beginning of
                 a beautiful journey.
+
             </p>
 
         </div>
 
+
         <div class="memory">
 
             <img
-                src="./childhood2.jpg"
-                alt="Childhood">
+            src="./childhood2.jpg"
+            alt="Childhood">
 
             <p>
+
                 🌟 Childhood days
                 that will always stay special.
+
             </p>
 
         </div>
 
+
         <div class="memory">
 
             <img
-                src="./childhood3.jpg"
-                alt="Childhood">
+            src="./childhood3.jpg"
+            alt="Childhood">
 
             <p>
+
                 ❤️ Those innocent smiles
                 and unforgettable memories.
+
             </p>
 
         </div>
 
     </div>
 
+
     <button
-        class="nextBtn"
-        onclick="showSection('friends')">
+    class="nextBtn"
+    onclick="showSection('friends')">
 
         Next → 👬
 
@@ -1942,9 +1676,9 @@ section::before{
 </section>
 
 
-<!-- =====================================================
-     👬 FRIENDS
-===================================================== -->
+<!-- ==================================================
+     FRIENDS
+================================================== -->
 
 <section id="friends">
 
@@ -1957,8 +1691,8 @@ section::before{
         <div class="friendCard">
 
             <img
-                src="./friend1.jpg"
-                alt="Friend">
+            src="./friend1.jpg"
+            alt="Friend">
 
             <p>
                 ❤️ Best Memories
@@ -1966,11 +1700,12 @@ section::before{
 
         </div>
 
+
         <div class="friendCard">
 
             <img
-                src="./friend2.jpg"
-                alt="Friend">
+            src="./friend2.jpg"
+            alt="Friend">
 
             <p>
                 ✨ Crazy Moments
@@ -1978,11 +1713,12 @@ section::before{
 
         </div>
 
+
         <div class="friendCard">
 
             <img
-                src="./friend3.jpg"
-                alt="Friend">
+            src="./friend3.jpg"
+            alt="Friend">
 
             <p>
                 😂 Unlimited Fun
@@ -1992,9 +1728,10 @@ section::before{
 
     </div>
 
+
     <button
-        class="nextBtn"
-        onclick="showSection('quotes')">
+    class="nextBtn"
+    onclick="showSection('quotes')">
 
         Next → 💬
 
@@ -2003,9 +1740,9 @@ section::before{
 </section>
 
 
-<!-- =====================================================
-     💬 QUOTES
-===================================================== -->
+<!-- ==================================================
+     QUOTES
+================================================== -->
 
 <section id="quotes">
 
@@ -2016,15 +1753,16 @@ section::before{
     <div class="quoteBox">
 
         <p
-            id="quoteText"
-            class="quote">
+        id="quoteText"
+        class="quote">
         </p>
 
     </div>
 
+
     <button
-        class="nextBtn"
-        onclick="showSection('bike')">
+    class="nextBtn"
+    onclick="showSection('bike')">
 
         Next → 🏍️
 
@@ -2033,9 +1771,9 @@ section::before{
 </section>
 
 
-<!-- =====================================================
-     🏍️ BIKE
-===================================================== -->
+<!-- ==================================================
+     BIKE
+================================================== -->
 
 <section id="bike">
 
@@ -2043,31 +1781,26 @@ section::before{
         🏍️ Favorite Memory
     </h1>
 
-    <!--
-        photo.jpg
-        LAST BIKE PHOTO
-
-        object-fit:contain
-        = FULL PHOTO VISIBLE
-        = FACE CROP AAGAATHU
-    -->
+    <!-- LAST BIKE PHOTO -->
 
     <img
-        class="bikePhoto"
-        src="./photo.jpg"
-        alt="Bike Memory">
+    class="bikePhoto"
+    src="./photo.jpg"
+    alt="Bike Memory">
 
     <p style="
-        margin-top:12px;
-        color:#ccc;
-        font-size:14px;
-    ">
+    margin-top:12px;
+    color:#ccc;
+    font-size:14px;">
+
         🏍️ Ride. Smile. Create Memories.
+
     </p>
 
+
     <button
-        class="nextBtn"
-        onclick="showSection('final')">
+    class="nextBtn"
+    onclick="showSection('final')">
 
         Final Surprise → ✨
 
@@ -2076,9 +1809,9 @@ section::before{
 </section>
 
 
-<!-- =====================================================
-     💜 FINAL
-===================================================== -->
+<!-- ==================================================
+     FINAL
+================================================== -->
 
 <section id="final">
 
@@ -2115,14 +1848,14 @@ section::before{
 
 <script>
 
-/* =====================================================
-   🔐 PASSWORD
-===================================================== */
+/* =========================
+   PASSWORD
+========================= */
 
 let enteredPassword = "";
 
 const correctPassword =
-    "15092007";
+"15092007";
 
 
 function pressNumber(number){
@@ -2166,30 +1899,30 @@ function updateDisplay(){
     document.getElementById(
         "display"
     ).innerText =
-        output ||
-        "_ _ _ _ _ _ _ _";
+    output ||
+    "_ _ _ _ _ _ _ _";
 }
 
 
 function clearPassword(){
 
     enteredPassword =
-        enteredPassword.slice(0,-1);
+    enteredPassword.slice(0,-1);
 
     updateDisplay();
 
     document.getElementById(
         "loginError"
-    ).innerText = "";
+    ).innerText="";
 }
 
 
 function checkPassword(){
 
     const error =
-        document.getElementById(
-            "loginError"
-        );
+    document.getElementById(
+        "loginError"
+    );
 
     if(
         enteredPassword ===
@@ -2197,10 +1930,10 @@ function checkPassword(){
     ){
 
         error.style.color =
-            "#c084fc";
+        "#c084fc";
 
         error.innerText =
-            "🔓 ACCESS GRANTED ✨";
+        "🔓 ACCESS GRANTED ✨";
 
         createConfetti();
 
@@ -2219,12 +1952,12 @@ function checkPassword(){
     else{
 
         error.style.color =
-            "#ff66cc";
+        "#ff66cc";
 
         error.innerText =
-            "❌ WRONG PASSWORD";
+        "❌ WRONG PASSWORD";
 
-        enteredPassword = "";
+        enteredPassword="";
 
         setTimeout(
             updateDisplay,
@@ -2234,32 +1967,32 @@ function checkPassword(){
 }
 
 
-/* =====================================================
+/* =========================
    SECTION CHANGE
-===================================================== */
+========================= */
 
 function showSection(id){
 
     document
-        .querySelectorAll("section")
-        .forEach(
-            section=>{
+    .querySelectorAll("section")
+    .forEach(section=>{
 
-                section.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-    document
-        .getElementById(id)
-        .classList.add(
+        section.classList.remove(
             "active"
         );
 
+    });
+
+
+    document
+    .getElementById(id)
+    .classList.add(
+        "active"
+    );
+
+
     if(
-        id === "quotes"
+        id==="quotes"
     ){
 
         setTimeout(
@@ -2270,9 +2003,9 @@ function showSection(id){
 }
 
 
-/* =====================================================
-   🎁 GIFT
-===================================================== */
+/* =========================
+   GIFT
+========================= */
 
 function openGift(){
 
@@ -2285,9 +2018,9 @@ function openGift(){
 function openBirthday(){
 
     const gift =
-        document.getElementById(
-            "giftBox"
-        );
+    document.getElementById(
+        "giftBox"
+    );
 
     gift.classList.add(
         "open"
@@ -2307,24 +2040,23 @@ function openBirthday(){
 }
 
 
-/* =====================================================
-   🎂 CANDLE OFF
-===================================================== */
+/* =========================
+   CANDLE
+========================= */
 
 function turnOffCandle(){
 
     const cake =
-        document.getElementById(
-            "cakeEmoji"
-        );
+    document.getElementById(
+        "cakeEmoji"
+    );
 
-    cake.innerHTML =
-        "🎂";
+    cake.innerHTML="🎂";
 
     const flash =
-        document.getElementById(
-            "flash"
-        );
+    document.getElementById(
+        "flash"
+    );
 
     flash.classList.add(
         "show"
@@ -2348,9 +2080,9 @@ function turnOffCandle(){
 }
 
 
-/* =====================================================
-   ✨ CONFETTI
-===================================================== */
+/* =========================
+   CONFETTI
+========================= */
 
 function createConfetti(){
 
@@ -2361,25 +2093,26 @@ function createConfetti(){
     ){
 
         const confetti =
-            document.createElement(
-                "div"
-            );
+        document.createElement(
+            "div"
+        );
 
-        confetti.className =
-            "confetti";
+        confetti.className=
+        "confetti";
 
-        confetti.style.left =
-            Math.random()*100 +
-            "vw";
+        confetti.style.left=
+        Math.random()*100+
+        "vw";
 
-        confetti.style.background =
-            randomPurple();
+        confetti.style.background=
+        randomPurple();
 
-        confetti.style.animationDuration =
-            (
-                2 +
-                Math.random()*3
-            ) + "s";
+        confetti.style.animationDuration=
+        (
+            2+
+            Math.random()*3
+        )+
+        "s";
 
         document.body.appendChild(
             confetti
@@ -2394,20 +2127,18 @@ function createConfetti(){
 }
 
 
-/* =====================================================
-   💜 HEARTS
-===================================================== */
+/* =========================
+   HEARTS
+========================= */
 
 function createHearts(){
 
-    const hearts = [
-
+    const hearts=[
         "💜",
         "💖",
         "💗",
         "✨",
         "💕"
-
     ];
 
     for(
@@ -2417,28 +2148,28 @@ function createHearts(){
     ){
 
         const heart =
-            document.createElement(
-                "div"
-            );
+        document.createElement(
+            "div"
+        );
 
-        heart.className =
-            "heart";
+        heart.className=
+        "heart";
 
-        heart.innerText =
-            hearts[
-                Math.floor(
-                    Math.random() *
-                    hearts.length
-                )
-            ];
+        heart.innerText=
+        hearts[
+            Math.floor(
+                Math.random()*
+                hearts.length
+            )
+        ];
 
-        heart.style.left =
-            Math.random()*100 +
-            "vw";
+        heart.style.left=
+        Math.random()*100+
+        "vw";
 
-        heart.style.animationDelay =
-            Math.random()*2 +
-            "s";
+        heart.style.animationDelay=
+        Math.random()*2+
+        "s";
 
         document.body.appendChild(
             heart
@@ -2453,13 +2184,13 @@ function createHearts(){
 }
 
 
-/* =====================================================
-   💜 RANDOM PURPLE
-===================================================== */
+/* =========================
+   PURPLE COLORS
+========================= */
 
 function randomPurple(){
 
-    const colors = [
+    const colors=[
 
         "#a855f7",
         "#c084fc",
@@ -2472,18 +2203,18 @@ function randomPurple(){
 
     return colors[
         Math.floor(
-            Math.random() *
+            Math.random()*
             colors.length
         )
     ];
 }
 
 
-/* =====================================================
-   💬 QUOTES
-===================================================== */
+/* =========================
+   QUOTES
+========================= */
 
-const quotes = [
+const quotes=[
 
     "✨ May every dream you have come true.",
 
@@ -2499,60 +2230,59 @@ const quotes = [
 
 ];
 
-let quoteIndex = 0;
+
+let quoteIndex=0;
 
 
 function typeQuote(){
 
     const element =
-        document.getElementById(
-            "quoteText"
-        );
+    document.getElementById(
+        "quoteText"
+    );
 
-    const text =
-        quotes[
-            quoteIndex
-        ];
+    const text=
+    quotes[
+        quoteIndex
+    ];
 
-    let index = 0;
+    let index=0;
 
-    element.innerHTML = "";
+    element.innerHTML="";
 
-    const timer =
-        setInterval(()=>{
+    const timer=
+    setInterval(()=>{
 
-            element.innerHTML +=
-                text.charAt(index);
+        element.innerHTML+=
+        text.charAt(index);
 
-            index++;
+        index++;
 
-            if(
-                index >=
-                text.length
-            ){
+        if(
+            index>=text.length
+        ){
 
-                clearInterval(
-                    timer
-                );
-            }
+            clearInterval(
+                timer
+            );
+        }
 
-        },50);
+    },50);
 
     quoteIndex++;
 
     if(
-        quoteIndex >=
-        quotes.length
+        quoteIndex>=quotes.length
     ){
 
-        quoteIndex = 0;
+        quoteIndex=0;
     }
 }
 
 
-/* =====================================================
-   ⭐ PURPLE STARS
-===================================================== */
+/* =========================
+   STARS
+========================= */
 
 for(
     let i=0;
@@ -2561,24 +2291,24 @@ for(
 ){
 
     const star =
-        document.createElement(
-            "div"
-        );
+    document.createElement(
+        "div"
+    );
 
-    star.className =
-        "star";
+    star.className=
+    "star";
 
-    star.style.left =
-        Math.random()*100 +
-        "vw";
+    star.style.left=
+    Math.random()*100+
+    "vw";
 
-    star.style.top =
-        Math.random()*100 +
-        "vh";
+    star.style.top=
+    Math.random()*100+
+    "vh";
 
-    star.style.animationDelay =
-        Math.random()*4 +
-        "s";
+    star.style.animationDelay=
+    Math.random()*4+
+    "s";
 
     document.body.appendChild(
         star
