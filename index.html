@@ -2,20 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
 
-<title>15.09.2007 | Birthday Surprise</title>
+<title>Birthday Surprise | 15.09.2007</title>
 
 <style>
 
 /* =====================================================
-   BLACK + GOLDEN BIRTHDAY THEME
+   RESET
 ===================================================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
 }
 
 html{
@@ -23,49 +34,73 @@ html{
 }
 
 body{
-    font-family:Georgia, "Times New Roman", serif;
-    background:#050505;
-    color:#fff;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    background:#050008;
+
+    color:white;
+
     overflow:hidden;
 }
 
-/* GOLD COLORS */
-
-:root{
-    --gold:#d4af37;
-    --lightGold:#ffe9a3;
-    --darkGold:#8a6a18;
-    --black:#050505;
-    --card:#111111;
-}
 
 /* =====================================================
-   SECTIONS
+   VARIABLES
+===================================================== */
+
+:root{
+
+    --purple:#a855f7;
+
+    --lightPurple:#ead7ff;
+
+    --darkPurple:#6b21a8;
+
+    --deepPurple:#2b1245;
+
+    --black:#030003;
+}
+
+
+/* =====================================================
+   SECTION
 ===================================================== */
 
 section{
-    min-height:100vh;
+
     width:100%;
+
+    min-height:100dvh;
+
+    height:100dvh;
 
     display:none;
 
     justify-content:center;
+
     align-items:center;
+
     flex-direction:column;
 
     text-align:center;
 
     position:relative;
+
     overflow:hidden;
 
-    padding:25px;
+    padding:
+        20px
+        16px;
 
     background:
         radial-gradient(
-            circle at 50% 40%,
-            #30230b 0%,
-            #0b0b0b 40%,
-            #000000 100%
+            circle at center,
+            #2b1245 0%,
+            #100719 45%,
+            #020003 100%
         );
 }
 
@@ -73,7 +108,8 @@ section.active{
     display:flex;
 }
 
-/* GOLDEN BACKGROUND LIGHT */
+
+/* Purple background glow */
 
 section::before{
 
@@ -81,22 +117,28 @@ section::before{
 
     position:absolute;
 
-    width:500px;
-    height:500px;
+    width:
+        min(90vw,500px);
+
+    height:
+        min(90vw,500px);
 
     border-radius:50%;
 
-    background:#d4af3720;
+    background:
+        #a855f725;
 
-    filter:blur(100px);
+    filter:blur(90px);
 
     animation:
-        goldLight 5s infinite alternate;
+        purpleLight 5s
+        infinite alternate;
 
     pointer-events:none;
+
 }
 
-@keyframes goldLight{
+@keyframes purpleLight{
 
     from{
         transform:scale(.8);
@@ -105,38 +147,47 @@ section::before{
 
     to{
         transform:scale(1.3);
-        opacity:.7;
+        opacity:.8;
     }
+
 }
 
+
 /* =====================================================
-   GOLD PARTICLES
+   PARTICLES
 ===================================================== */
 
 .star{
 
     position:fixed;
 
-    width:4px;
-    height:4px;
+    width:3px;
+
+    height:3px;
 
     border-radius:50%;
 
-    background:var(--gold);
+    background:
+        var(--purple);
 
     box-shadow:
-        0 0 8px var(--gold),
-        0 0 20px var(--lightGold);
+        0 0 7px var(--purple),
+        0 0 15px var(--lightPurple);
 
     animation:
-        starAnimation 4s infinite alternate;
+        starAnimation
+        4s
+        infinite alternate;
 
     z-index:0;
+
+    pointer-events:none;
 }
 
 @keyframes starAnimation{
 
     from{
+
         transform:
             translateY(0)
             scale(.5);
@@ -145,24 +196,28 @@ section::before{
     }
 
     to{
+
         transform:
-            translateY(-50px)
+            translateY(-40px)
             scale(1.5);
 
         opacity:1;
     }
+
 }
 
+
 /* =====================================================
-   LOGIN
+   🔐 LOGIN
 ===================================================== */
 
 #login{
+
     background:
         radial-gradient(
             circle,
-            #2c2108,
-            #090909 50%,
+            #32104d,
+            #0b0012 50%,
             #000 100%
         );
 }
@@ -170,101 +225,91 @@ section::before{
 .login-box{
 
     position:relative;
+
     z-index:5;
 
-    width:min(90%,390px);
+    width:
+        min(92vw,390px);
 
-    padding:40px 25px;
+    max-height:
+        calc(100dvh - 30px);
 
-    text-align:center;
+    padding:
+        clamp(20px,5vw,40px)
+        18px;
 
     background:
         linear-gradient(
             145deg,
-            #151515,
-            #080808
+            #19111f,
+            #050008
         );
 
     border:
+        1px solid
+        var(--purple);
 
-        1px solid var(--gold);
-
-    border-radius:25px;
+    border-radius:24px;
 
     box-shadow:
+        0 0 15px #a855f755,
+        0 0 45px #a855f733;
 
-        0 0 15px #d4af3755,
-        0 0 50px #d4af3725,
-        inset 0 0 30px #d4af3710;
-
-    animation:
-        loginAppear 1.5s ease;
+    overflow:hidden;
 }
 
-@keyframes loginAppear{
 
-    from{
-
-        opacity:0;
-
-        transform:
-            scale(.7)
-            translateY(50px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            scale(1)
-            translateY(0);
-    }
-}
-
-/* LOCK */
+/* Lock */
 
 .lock{
 
-    font-size:70px;
+    font-size:
+        clamp(45px,13vw,70px);
 
     filter:
         drop-shadow(
-            0 0 15px var(--gold)
+            0 0 15px
+            var(--purple)
         );
 
     animation:
-        lockGlow 2s infinite alternate;
+        lockGlow
+        2s
+        infinite alternate;
 }
 
 @keyframes lockGlow{
 
-    from{
-        transform:scale(1);
+    to{
+        transform:scale(1.1);
     }
 
-    to{
-        transform:scale(1.12);
-    }
 }
+
 
 .login-box h1{
 
-    margin:12px 0;
+    margin:
+        8px 0;
 
-    font-size:40px;
+    font-size:
+        clamp(28px,8vw,40px);
 
-    color:var(--lightGold);
+    color:
+        var(--lightPurple);
 
     text-shadow:
-        0 0 10px var(--gold),
-        0 0 30px #d4af3766;
+        0 0 10px var(--purple),
+        0 0 25px #a855f766;
 }
 
 .login-box p{
+    color:#d7d0dd;
 
-    color:#d7d7d7;
+    font-size:
+        clamp(13px,4vw,16px);
 }
+
 
 /* =====================================================
    PASSWORD DISPLAY
@@ -272,29 +317,44 @@ section::before{
 
 #display{
 
-    width:290px;
+    width:
+        min(100%,280px);
 
-    margin:25px auto;
+    margin:
+        18px auto;
 
-    padding:16px;
+    padding:
+        12px 8px;
+
+    min-height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
     background:#000;
 
     border:
-
-        1px solid var(--gold);
+        1px solid
+        var(--purple);
 
     border-radius:12px;
 
-    color:var(--lightGold);
+    color:
+        var(--lightPurple);
 
-    font-size:22px;
+    font-size:
+        clamp(17px,5vw,22px);
 
-    letter-spacing:6px;
+    letter-spacing:
+        clamp(3px,2vw,6px);
 
     box-shadow:
-        0 0 15px #d4af3744;
+        0 0 15px #a855f744;
 }
+
 
 /* =====================================================
    KEYPAD
@@ -302,7 +362,8 @@ section::before{
 
 .keypad{
 
-    width:290px;
+    width:
+        min(100%,280px);
 
     margin:auto;
 
@@ -311,70 +372,72 @@ section::before{
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:12px;
+    gap:
+        clamp(7px,2.5vw,12px);
 }
 
 .keypad button{
 
-    height:60px;
+    width:100%;
+
+    aspect-ratio:1.35/1;
+
+    min-height:48px;
+
+    max-height:62px;
 
     border:
+        1px solid
+        #a855f777;
 
-        1px solid #d4af3777;
-
-    border-radius:12px;
+    border-radius:11px;
 
     background:
         linear-gradient(
             145deg,
-            #191919,
-            #050505
+            #19131e,
+            #050008
         );
 
-    color:var(--lightGold);
+    color:
+        var(--lightPurple);
 
-    font-size:21px;
+    font-size:
+        clamp(17px,5vw,21px);
 
     font-weight:bold;
 
     cursor:pointer;
 
-    transition:.25s;
+    touch-action:manipulation;
 
-    box-shadow:
-        inset 0 0 10px #d4af3710;
+    transition:
+        transform .15s,
+        background .2s,
+        box-shadow .2s;
 }
 
 .keypad button:hover{
 
-    transform:scale(1.08);
-
     background:
         linear-gradient(
             145deg,
-            #d4af37,
-            #80600e
+            #a855f7,
+            #6b21a8
         );
 
-    color:#000;
+    color:white;
 
     box-shadow:
-        0 0 25px #d4af37;
+        0 0 20px
+        var(--purple);
 }
 
 .keypad button:active{
 
-    transform:scale(.9);
+    transform:scale(.92);
 }
 
-#loginError{
-
-    min-height:25px;
-
-    margin-top:18px;
-
-    color:#d4af37;
-}
 
 /* =====================================================
    OPENING DATE
@@ -383,41 +446,51 @@ section::before{
 .date{
 
     position:relative;
+
     z-index:2;
 
-    font-size:
-        clamp(50px,12vw,100px);
+    max-width:100%;
 
-    letter-spacing:8px;
+    font-size:
+        clamp(
+            38px,
+            11vw,
+            100px
+        );
+
+    letter-spacing:
+        clamp(2px,2vw,8px);
 
     font-weight:bold;
 
-    color:var(--lightGold);
+    color:
+        var(--lightPurple);
 
     text-shadow:
-
-        0 0 10px var(--gold),
-        0 0 30px var(--gold),
-        0 0 70px #d4af3766;
+        0 0 10px var(--purple),
+        0 0 30px var(--purple),
+        0 0 60px #a855f766;
 
     animation:
-        dateGlow 2s infinite alternate;
+        dateGlow
+        2s
+        infinite alternate;
 }
 
 @keyframes dateGlow{
 
-    from{
-        transform:scale(1);
+    to{
+        transform:scale(1.05);
     }
 
-    to{
-        transform:scale(1.08);
-    }
 }
 
 .openText{
 
-    margin-top:20px;
+    margin-top:15px;
+
+    font-size:
+        clamp(13px,4vw,18px);
 
     color:#ddd;
 
@@ -428,9 +501,11 @@ section::before{
 @keyframes blink{
 
     50%{
-        opacity:.3;
+        opacity:.35;
     }
+
 }
+
 
 /* =====================================================
    BUTTONS
@@ -439,84 +514,102 @@ section::before{
 .startBtn,
 .nextBtn{
 
-    margin-top:25px;
+    position:relative;
 
-    padding:14px 30px;
+    z-index:5;
+
+    margin-top:20px;
+
+    min-height:48px;
+
+    padding:
+        12px
+        24px;
 
     border:
-
-        1px solid var(--gold);
+        1px solid
+        var(--purple);
 
     border-radius:30px;
 
     background:
-
         linear-gradient(
             135deg,
-            #d4af37,
-            #8a6a18
+            #a855f7,
+            #6b21a8
         );
 
-    color:#050505;
+    color:white;
 
-    font-size:16px;
+    font-size:
+        clamp(14px,4vw,17px);
 
     font-weight:bold;
 
     cursor:pointer;
 
-    box-shadow:
-
-        0 0 15px #d4af3766;
-
-    transition:.3s;
-}
-
-.startBtn:hover,
-.nextBtn:hover{
-
-    transform:scale(1.08);
+    touch-action:manipulation;
 
     box-shadow:
-        0 0 35px var(--gold);
+        0 0 15px #a855f766;
+
+    transition:.25s;
 }
+
+.startBtn:active,
+.nextBtn:active{
+
+    transform:scale(.94);
+}
+
 
 /* =====================================================
-   GIFT
+   🎁 GIFT
 ===================================================== */
 
 .giftBox{
 
     position:relative;
+
     z-index:2;
 
-    font-size:145px;
+    font-size:
+        clamp(
+            90px,
+            30vw,
+            145px
+        );
 
     cursor:pointer;
 
     filter:
         drop-shadow(
-            0 0 25px var(--gold)
+            0 0 25px
+            var(--purple)
         );
 
     animation:
-        giftBounce 1.5s infinite;
+        giftBounce
+        1.5s
+        infinite;
 }
 
 @keyframes giftBounce{
 
     50%{
-
         transform:
-            translateY(-20px)
+            translateY(-15px)
             rotate(4deg);
     }
+
 }
 
 .giftBox.open{
 
     animation:
-        giftOpen 1s forwards;
+        giftOpen
+        1s
+        forwards;
 }
 
 @keyframes giftOpen{
@@ -524,7 +617,7 @@ section::before{
     50%{
 
         transform:
-            scale(1.4)
+            scale(1.3)
             rotate(-10deg);
     }
 
@@ -536,168 +629,218 @@ section::before{
 
         opacity:0;
     }
+
 }
 
 .giftTitle{
 
-    margin-top:20px;
+    margin-top:15px;
 
-    font-size:38px;
+    font-size:
+        clamp(27px,7vw,38px);
 
-    color:var(--lightGold);
+    color:
+        var(--lightPurple);
 
     text-shadow:
-        0 0 20px var(--gold);
+        0 0 20px
+        var(--purple);
 }
 
+
 /* =====================================================
-   TITLES
+   SECTION TITLE
 ===================================================== */
 
 .sectionTitle{
 
     position:relative;
+
     z-index:2;
 
+    width:100%;
+
     font-size:
-        clamp(30px,7vw,48px);
+        clamp(
+            26px,
+            7vw,
+            48px
+        );
 
-    margin-bottom:30px;
+    margin-bottom:
+        clamp(18px,4vw,30px);
 
-    color:var(--lightGold);
+    color:
+        var(--lightPurple);
 
     text-shadow:
-
-        0 0 10px var(--gold),
-        0 0 30px #d4af3755;
+        0 0 10px var(--purple),
+        0 0 25px #a855f755;
 }
 
+
 /* =====================================================
-   PHOTO SECTION
+   📸 PHOTO GRID
 ===================================================== */
 
 .photoGrid{
 
     position:relative;
+
     z-index:2;
 
-    display:flex;
+    width:100%;
 
-    flex-wrap:wrap;
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                120px,
+                190px
+            )
+        );
 
     justify-content:center;
 
-    gap:25px;
+    gap:
+        clamp(10px,3vw,25px);
 
-    max-width:900px;
+    max-height:
+        58vh;
+
+    overflow:auto;
+
+    padding:5px;
 }
 
 .photoCard{
 
-    width:190px;
-    height:240px;
+    width:100%;
 
-    padding:4px;
+    aspect-ratio:
+        4 / 5;
 
-    border-radius:20px;
+    padding:3px;
+
+    border-radius:17px;
 
     background:
         linear-gradient(
             45deg,
-            #8a6a18,
-            #ffe9a3,
-            #d4af37,
-            #8a6a18
+            #6b21a8,
+            #e9d5ff,
+            #a855f7,
+            #6b21a8
         );
 
     background-size:
         400% 400%;
 
     animation:
-        goldBorder 4s infinite,
-        photoFloat 3s infinite ease-in-out;
+        purpleBorder 4s infinite,
+        photoFloat 3s infinite
+        ease-in-out;
 
     box-shadow:
-        0 0 25px #d4af3766;
+        0 0 20px #a855f766;
 }
 
 .photoCard img{
 
     width:100%;
+
     height:100%;
+
+    display:block;
 
     object-fit:cover;
 
-    border-radius:16px;
+    border-radius:14px;
 
     background:#111;
 }
 
-@keyframes goldBorder{
-
-    0%{
-        background-position:0% 50%;
-    }
+@keyframes purpleBorder{
 
     50%{
-        background-position:100% 50%;
+        background-position:
+            100% 50%;
     }
 
-    100%{
-        background-position:0% 50%;
-    }
 }
 
 @keyframes photoFloat{
 
     50%{
-
         transform:
-            translateY(-15px)
-            rotate(2deg);
+            translateY(-8px)
+            rotate(1deg);
     }
+
 }
 
+
 /* =====================================================
-   CAKE
+   🎂 CAKE
 ===================================================== */
 
 .cake{
 
     position:relative;
+
     z-index:2;
 
-    font-size:150px;
+    font-size:
+        clamp(
+            90px,
+            30vw,
+            150px
+        );
 
     cursor:pointer;
 
     filter:
         drop-shadow(
-            0 0 25px var(--gold)
+            0 0 25px
+            var(--purple)
         );
 
     animation:
-        cakeFloat 2s infinite ease-in-out;
+        cakeFloat
+        2s
+        infinite
+        ease-in-out;
 }
 
 @keyframes cakeFloat{
 
     50%{
-        transform:translateY(-15px);
+        transform:
+            translateY(-12px);
     }
+
 }
 
 .candleText{
+
+    max-width:
+        90vw;
 
     color:#ddd;
 
     line-height:1.7;
 
-    margin-top:20px;
+    margin-top:15px;
+
+    font-size:
+        clamp(13px,4vw,17px);
 }
 
+
 /* =====================================================
-   FLASH
+   ✨ FLASH
 ===================================================== */
 
 .flash{
@@ -709,9 +852,9 @@ section::before{
     background:
         radial-gradient(
             circle,
-            #fff,
-            #ffe9a3,
-            #d4af37
+            white,
+            #ead7ff,
+            #a855f7
         );
 
     z-index:500;
@@ -724,7 +867,8 @@ section::before{
 .flash.show{
 
     animation:
-        flashAnimation .8s;
+        flashAnimation
+        .8s;
 }
 
 @keyframes flashAnimation{
@@ -740,30 +884,37 @@ section::before{
     100%{
         opacity:0;
     }
+
 }
 
+
 /* =====================================================
-   CHILDHOOD
+   👶 CHILDHOOD
 ===================================================== */
 
 .timeline{
 
     position:relative;
+
     z-index:2;
 
-    width:min(90%,850px);
+    width:
+        min(94vw,850px);
+
+    max-height:
+        62vh;
 
     display:flex;
 
     flex-direction:column;
 
-    gap:20px;
+    gap:15px;
 
-    max-height:65vh;
+    overflow-y:auto;
 
-    overflow:auto;
+    overflow-x:hidden;
 
-    padding:10px;
+    padding:5px;
 }
 
 .memory{
@@ -772,50 +923,62 @@ section::before{
 
     align-items:center;
 
-    gap:20px;
+    gap:15px;
 
-    padding:15px;
+    padding:12px;
 
     background:
         linear-gradient(
             135deg,
-            #151515,
-            #080808
+            #17121c,
+            #080509
         );
 
     border:
+        1px solid
+        #a855f766;
 
-        1px solid #d4af3766;
-
-    border-radius:20px;
+    border-radius:18px;
 
     box-shadow:
-        0 0 20px #d4af3722;
+        0 0 20px #a855f722;
 
     animation:
-        memorySlide 1s ease;
+        memorySlide
+        1s ease;
+
+    flex-shrink:0;
 }
 
 .memory img{
 
-    width:140px;
-    height:140px;
+    width:
+        clamp(95px,25vw,140px);
+
+    height:
+        clamp(95px,25vw,140px);
+
+    flex-shrink:0;
 
     object-fit:cover;
 
-    border-radius:15px;
+    border-radius:13px;
 
     border:
-        2px solid var(--gold);
+        2px solid
+        var(--purple);
 }
 
 .memory p{
 
     color:#ddd;
 
-    font-size:18px;
+    font-size:
+        clamp(13px,4vw,18px);
 
     line-height:1.5;
+
+    text-align:left;
 }
 
 @keyframes memorySlide{
@@ -825,7 +988,7 @@ section::before{
         opacity:0;
 
         transform:
-            translateX(-100px);
+            translateX(-80px);
     }
 
     to{
@@ -835,68 +998,96 @@ section::before{
         transform:
             translateX(0);
     }
+
 }
 
+
 /* =====================================================
-   FRIENDS
+   👬 FRIENDS
 ===================================================== */
 
 .friendGrid{
 
     position:relative;
+
     z-index:2;
 
-    display:flex;
+    width:100%;
 
-    flex-wrap:wrap;
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                130px,
+                200px
+            )
+        );
 
     justify-content:center;
 
-    gap:20px;
+    gap:
+        clamp(10px,3vw,20px);
 
-    max-width:900px;
+    max-height:
+        58vh;
+
+    overflow:auto;
+
+    padding:5px;
 }
 
 .friendCard{
 
-    width:200px;
+    width:100%;
 
-    padding:12px;
+    padding:9px;
 
     background:#111;
 
     border:
+        1px solid
+        #a855f777;
 
-        1px solid #d4af3777;
-
-    border-radius:20px;
+    border-radius:18px;
 
     animation:
-        friendFloat 3s infinite alternate;
+        friendFloat
+        3s
+        infinite
+        alternate;
 
     box-shadow:
-        0 0 15px #d4af3722;
+        0 0 15px #a855f722;
 }
 
 .friendCard img{
 
     width:100%;
 
-    height:190px;
+    aspect-ratio:1/1;
+
+    display:block;
 
     object-fit:cover;
 
-    border-radius:15px;
+    border-radius:13px;
 
     border:
-        1px solid var(--gold);
+        1px solid
+        var(--purple);
 }
 
 .friendCard p{
 
-    margin-top:10px;
+    margin-top:8px;
 
-    color:var(--lightGold);
+    color:
+        var(--lightPurple);
+
+    font-size:
+        clamp(12px,3.5vw,16px);
 }
 
 @keyframes friendFloat{
@@ -904,28 +1095,34 @@ section::before{
     to{
 
         transform:
-            translateY(-15px)
-            rotate(2deg);
+            translateY(-8px)
+            rotate(1deg);
 
         box-shadow:
-            0 0 30px #d4af3766;
+            0 0 25px #a855f766;
     }
+
 }
 
+
 /* =====================================================
-   QUOTES
+   💬 QUOTES
 ===================================================== */
 
 .quoteBox{
 
     position:relative;
+
     z-index:2;
 
-    width:min(90%,700px);
+    width:
+        min(92vw,700px);
 
-    min-height:180px;
+    min-height:
+        clamp(150px,35vh,220px);
 
-    padding:35px;
+    padding:
+        clamp(20px,6vw,35px);
 
     display:flex;
 
@@ -936,33 +1133,37 @@ section::before{
     background:
         linear-gradient(
             145deg,
-            #151515,
-            #070707
+            #17121c,
+            #070509
         );
 
     border:
+        1px solid
+        var(--purple);
 
-        1px solid var(--gold);
-
-    border-radius:25px;
+    border-radius:22px;
 
     box-shadow:
-        0 0 30px #d4af3733;
+        0 0 30px #a855f733;
 }
 
 .quote{
 
-    font-size:25px;
+    font-size:
+        clamp(18px,5vw,25px);
 
     line-height:1.6;
 
-    color:var(--lightGold);
+    color:
+        var(--lightPurple);
 
     border-right:
-        3px solid var(--gold);
+        3px solid
+        var(--purple);
 
-    padding-right:5px;
+    padding-right:4px;
 }
+
 
 /* =====================================================
    🏍️ BIKE PHOTO
@@ -971,119 +1172,180 @@ section::before{
 .bikePhoto{
 
     position:relative;
+
     z-index:2;
 
-    width:min(90vw,550px);
+    /*
+       MOBILE WIDTH
+    */
 
-    height:350px;
+    width:
+        min(94vw,700px);
 
-    object-fit:cover;
+    /*
+       MOBILE HEIGHT
+    */
 
-    border-radius:25px;
+    height:
+        min(58vh,650px);
+
+    /*
+       FULL PHOTO
+       FACE CROP AAGAATHU
+    */
+
+    object-fit:contain;
+
+    background:#030003;
+
+    padding:5px;
 
     border:
-        4px solid var(--gold);
+        3px solid
+        var(--purple);
+
+    border-radius:20px;
 
     box-shadow:
 
-        0 0 20px #d4af37,
-        0 0 60px #d4af3744;
+        0 0 20px
+        var(--purple),
+
+        0 0 55px
+        #a855f744;
 
     animation:
-        bikeAnimation 4s infinite alternate;
+        bikeAnimation
+        4s
+        infinite
+        alternate;
 }
 
 @keyframes bikeAnimation{
 
     to{
 
-        transform:
-            scale(1.05)
-            rotate(1deg);
+        transform:scale(1.025);
 
         box-shadow:
-            0 0 40px var(--gold);
+
+            0 0 35px
+            var(--purple),
+
+            0 0 70px
+            #a855f744;
     }
+
 }
 
+
 /* =====================================================
-   FINAL
+   💜 FINAL
 ===================================================== */
 
 .finalTitle{
 
     position:relative;
+
     z-index:2;
 
-    font-size:
-        clamp(40px,10vw,80px);
+    max-width:100%;
 
-    color:var(--lightGold);
+    font-size:
+        clamp(
+            35px,
+            10vw,
+            80px
+        );
+
+    color:
+        var(--lightPurple);
 
     animation:
-        finalGlow 2s infinite alternate;
+        finalGlow
+        2s
+        infinite
+        alternate;
 }
 
 @keyframes finalGlow{
-
-    from{
-
-        text-shadow:
-            0 0 10px var(--gold);
-    }
 
     to{
 
         text-shadow:
 
-            0 0 20px var(--gold),
-            0 0 50px var(--gold),
-            0 0 100px #d4af3766;
+            0 0 20px
+            var(--purple),
+
+            0 0 50px
+            var(--purple),
+
+            0 0 90px
+            #a855f766;
     }
+
 }
 
 .finalDate{
 
     position:relative;
+
     z-index:2;
 
-    margin-top:25px;
+    margin-top:18px;
 
-    font-size:45px;
+    font-size:
+        clamp(
+            30px,
+            9vw,
+            45px
+        );
 
-    color:var(--lightGold);
+    color:
+        var(--lightPurple);
 
     animation:
-        datePulse 2s infinite alternate;
+        datePulse
+        2s
+        infinite
+        alternate;
 }
 
 @keyframes datePulse{
 
     to{
 
-        transform:scale(1.1);
+        transform:scale(1.08);
 
         text-shadow:
-            0 0 30px var(--gold);
+            0 0 30px
+            var(--purple);
     }
+
 }
 
 .finalMessage{
 
     position:relative;
+
     z-index:2;
 
-    margin-top:25px;
+    max-width:
+        90vw;
 
-    font-size:20px;
+    margin-top:20px;
+
+    font-size:
+        clamp(15px,4.5vw,20px);
 
     line-height:1.8;
 
     color:#ddd;
 }
 
+
 /* =====================================================
-   HEARTS
+   💜 HEARTS
 ===================================================== */
 
 .heart{
@@ -1092,14 +1354,18 @@ section::before{
 
     bottom:-50px;
 
-    font-size:28px;
+    font-size:
+        clamp(20px,6vw,30px);
 
     z-index:300;
 
     pointer-events:none;
 
     animation:
-        heartUp 6s linear forwards;
+        heartUp
+        6s
+        linear
+        forwards;
 }
 
 @keyframes heartUp{
@@ -1126,10 +1392,12 @@ section::before{
 
         opacity:0;
     }
+
 }
 
+
 /* =====================================================
-   GOLD CONFETTI
+   ✨ CONFETTI
 ===================================================== */
 
 .confetti{
@@ -1138,16 +1406,20 @@ section::before{
 
     top:-20px;
 
-    width:9px;
-    height:18px;
+    width:7px;
+
+    height:15px;
 
     z-index:400;
 
     background:
-        var(--gold);
+        var(--purple);
 
     animation:
-        confettiFall 3s linear forwards;
+        confettiFall
+        3s
+        linear
+        forwards;
 }
 
 @keyframes confettiFall{
@@ -1160,61 +1432,199 @@ section::before{
 
         opacity:0;
     }
+
 }
 
+
 /* =====================================================
-   MOBILE
+   📱 SMALL PHONES
 ===================================================== */
 
-@media(max-width:600px){
+@media(max-width:380px){
+
+    section{
+
+        padding:
+            14px
+            10px;
+    }
 
     .login-box{
-        padding:30px 15px;
+
+        padding:
+            18px
+            12px;
     }
 
-    #display,
+    #display{
+
+        margin:
+            12px auto;
+    }
+
     .keypad{
-        width:270px;
+
+        gap:6px;
     }
 
-    .photoCard{
-        width:140px;
-        height:190px;
+    .keypad button{
+
+        min-height:44px;
+
+        font-size:17px;
+    }
+
+    .sectionTitle{
+
+        margin-bottom:15px;
+    }
+
+    .photoGrid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        max-width:300px;
+    }
+
+    .friendGrid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        max-width:310px;
     }
 
     .memory{
-        flex-direction:column;
+
+        gap:10px;
+
+        padding:8px;
     }
 
     .memory img{
-        width:200px;
-        height:180px;
+
+        width:85px;
+
+        height:85px;
     }
 
-    .friendCard{
-        width:145px;
-    }
+    .memory p{
 
-    .friendCard img{
-        height:150px;
-    }
-
-    .cake{
-        font-size:110px;
+        font-size:12px;
     }
 
     .bikePhoto{
-        height:250px;
+
+        height:55vh;
     }
 
-    .quote{
-        font-size:20px;
+}
+
+
+/* =====================================================
+   📱 LANDSCAPE PHONE
+===================================================== */
+
+@media(
+    max-height:500px
+) and (
+    orientation:landscape
+){
+
+    section{
+
+        padding:
+            10px;
+    }
+
+    .login-box{
+
+        padding:
+            12px;
+
+        max-height:
+            96dvh;
+    }
+
+    .lock{
+
+        font-size:35px;
+    }
+
+    .login-box h1{
+
+        font-size:25px;
+    }
+
+    #display{
+
+        margin:
+            8px auto;
+
+        padding:7px;
+    }
+
+    .keypad{
+
+        max-width:240px;
+
+        gap:5px;
+    }
+
+    .keypad button{
+
+        min-height:35px;
+
+        max-height:42px;
+    }
+
+    .sectionTitle{
+
+        margin-bottom:8px;
+
+        font-size:26px;
+    }
+
+    .bikePhoto{
+
+        height:58vh;
+    }
+
+}
+
+
+/* =====================================================
+   TOUCH DEVICES
+===================================================== */
+
+@media(hover:none){
+
+    .keypad button:hover{
+
+        background:
+            linear-gradient(
+                145deg,
+                #19131e,
+                #050008
+            );
+
+        box-shadow:none;
+
+        transform:none;
+    }
+
+    .startBtn:active,
+    .nextBtn:active{
+
+        transform:scale(.94);
     }
 
 }
 
 </style>
 </head>
+
 
 <body>
 
@@ -1245,27 +1655,63 @@ section::before{
 
         <div class="keypad">
 
-            <button onclick="pressNumber('1')">1</button>
-            <button onclick="pressNumber('2')">2</button>
-            <button onclick="pressNumber('3')">3</button>
+            <button onclick="pressNumber('1')">
+                1
+            </button>
 
-            <button onclick="pressNumber('4')">4</button>
-            <button onclick="pressNumber('5')">5</button>
-            <button onclick="pressNumber('6')">6</button>
+            <button onclick="pressNumber('2')">
+                2
+            </button>
 
-            <button onclick="pressNumber('7')">7</button>
-            <button onclick="pressNumber('8')">8</button>
-            <button onclick="pressNumber('9')">9</button>
+            <button onclick="pressNumber('3')">
+                3
+            </button>
 
-            <button onclick="clearPassword()">⌫</button>
-            <button onclick="pressNumber('0')">0</button>
-            <button onclick="checkPassword()">🔓</button>
+            <button onclick="pressNumber('4')">
+                4
+            </button>
+
+            <button onclick="pressNumber('5')">
+                5
+            </button>
+
+            <button onclick="pressNumber('6')">
+                6
+            </button>
+
+            <button onclick="pressNumber('7')">
+                7
+            </button>
+
+            <button onclick="pressNumber('8')">
+                8
+            </button>
+
+            <button onclick="pressNumber('9')">
+                9
+            </button>
+
+            <button onclick="clearPassword()">
+                ⌫
+            </button>
+
+            <button onclick="pressNumber('0')">
+                0
+            </button>
+
+            <button onclick="checkPassword()">
+                🔓
+            </button>
 
         </div>
 
         <p id="loginError"></p>
 
-        <p style="margin-top:15px;font-size:13px;color:#b99b4a;">
+        <p style="
+            margin-top:12px;
+            font-size:12px;
+            color:#b98ce8;
+        ">
             ✨ A special date is waiting...
         </p>
 
@@ -1318,7 +1764,11 @@ section::before{
         Tap The Gift
     </h1>
 
-    <p style="margin-top:15px;color:#bbb;">
+    <p style="
+        margin-top:12px;
+        color:#bbb;
+        font-size:14px;
+    ">
         Something special is waiting inside... ✨
     </p>
 
@@ -1326,7 +1776,7 @@ section::before{
 
 
 <!-- =====================================================
-     📸 PHOTOS
+     📸 PHOTO REVEAL
 ===================================================== -->
 
 <section id="photos">
@@ -1363,7 +1813,11 @@ section::before{
 
     </div>
 
-    <p style="margin-top:25px;color:#bbb;">
+    <p style="
+        margin-top:15px;
+        color:#bbb;
+        font-size:14px;
+    ">
         ✨ Every picture has a story
     </p>
 
@@ -1403,7 +1857,8 @@ section::before{
 
         <br>
 
-        Tap the cake to blow the candles OFF!
+        Tap the cake to blow
+        the candles OFF!
 
     </p>
 
@@ -1439,8 +1894,11 @@ section::before{
             <p>
                 👶 Little moments,
                 big memories.
-                <br>
-                ✨ The beginning of a beautiful journey.
+
+                <br><br>
+
+                ✨ The beginning of
+                a beautiful journey.
             </p>
 
         </div>
@@ -1585,14 +2043,25 @@ section::before{
         🏍️ Favorite Memory
     </h1>
 
-    <!-- PHOTO.JPG IS USED HERE -->
+    <!--
+        photo.jpg
+        LAST BIKE PHOTO
+
+        object-fit:contain
+        = FULL PHOTO VISIBLE
+        = FACE CROP AAGAATHU
+    -->
 
     <img
         class="bikePhoto"
         src="./photo.jpg"
         alt="Bike Memory">
 
-    <p style="margin-top:25px;color:#ccc;">
+    <p style="
+        margin-top:12px;
+        color:#ccc;
+        font-size:14px;
+    ">
         🏍️ Ride. Smile. Create Memories.
     </p>
 
@@ -1608,7 +2077,7 @@ section::before{
 
 
 <!-- =====================================================
-     💛 FINAL SURPRISE
+     💜 FINAL
 ===================================================== -->
 
 <section id="final">
@@ -1627,7 +2096,8 @@ section::before{
 
         <br>
 
-        happiness, success, love & beautiful memories.
+        happiness, success,
+        love & beautiful memories.
 
         <br><br>
 
@@ -1635,7 +2105,8 @@ section::before{
 
         <br><br>
 
-        ✨ Keep Smiling. Keep Shining. ✨
+        💜 Keep Smiling.
+        Keep Shining. 💜
 
     </p>
 
@@ -1650,7 +2121,8 @@ section::before{
 
 let enteredPassword = "";
 
-const correctPassword = "15092007";
+const correctPassword =
+    "15092007";
 
 
 function pressNumber(number){
@@ -1673,9 +2145,7 @@ function pressNumber(number){
             checkPassword,
             300
         );
-
     }
-
 }
 
 
@@ -1698,7 +2168,6 @@ function updateDisplay(){
     ).innerText =
         output ||
         "_ _ _ _ _ _ _ _";
-
 }
 
 
@@ -1712,7 +2181,6 @@ function clearPassword(){
     document.getElementById(
         "loginError"
     ).innerText = "";
-
 }
 
 
@@ -1729,7 +2197,7 @@ function checkPassword(){
     ){
 
         error.style.color =
-            "#d4af37";
+            "#c084fc";
 
         error.innerText =
             "🔓 ACCESS GRANTED ✨";
@@ -1751,7 +2219,7 @@ function checkPassword(){
     else{
 
         error.style.color =
-            "#ff5555";
+            "#ff66cc";
 
         error.innerText =
             "❌ WRONG PASSWORD";
@@ -1762,9 +2230,7 @@ function checkPassword(){
             updateDisplay,
             500
         );
-
     }
-
 }
 
 
@@ -1776,13 +2242,15 @@ function showSection(id){
 
     document
         .querySelectorAll("section")
-        .forEach(section=>{
+        .forEach(
+            section=>{
 
-            section.classList.remove(
-                "active"
-            );
+                section.classList.remove(
+                    "active"
+                );
 
-        });
+            }
+        );
 
     document
         .getElementById(id)
@@ -1798,9 +2266,7 @@ function showSection(id){
             typeQuote,
             300
         );
-
     }
-
 }
 
 
@@ -1813,7 +2279,6 @@ function openGift(){
     showSection(
         "gift"
     );
-
 }
 
 
@@ -1839,12 +2304,11 @@ function openBirthday(){
         );
 
     },1200);
-
 }
 
 
 /* =====================================================
-   🎂 CANDLE
+   🎂 CANDLE OFF
 ===================================================== */
 
 function turnOffCandle(){
@@ -1881,7 +2345,6 @@ function turnOffCandle(){
         );
 
     },900);
-
 }
 
 
@@ -1906,16 +2369,17 @@ function createConfetti(){
             "confetti";
 
         confetti.style.left =
-            Math.random()*100+"vw";
+            Math.random()*100 +
+            "vw";
 
         confetti.style.background =
-            randomGold();
+            randomPurple();
 
         confetti.style.animationDuration =
             (
                 2 +
                 Math.random()*3
-            )+"s";
+            ) + "s";
 
         document.body.appendChild(
             confetti
@@ -1926,24 +2390,24 @@ function createConfetti(){
             confetti.remove();
 
         },5000);
-
     }
-
 }
 
 
 /* =====================================================
-   ❤️ HEARTS
+   💜 HEARTS
 ===================================================== */
 
 function createHearts(){
 
     const hearts = [
-        "❤️",
-        "💛",
-        "✨",
+
+        "💜",
         "💖",
+        "💗",
+        "✨",
         "💕"
+
     ];
 
     for(
@@ -1969,10 +2433,12 @@ function createHearts(){
             ];
 
         heart.style.left =
-            Math.random()*100+"vw";
+            Math.random()*100 +
+            "vw";
 
         heart.style.animationDelay =
-            Math.random()*2+"s";
+            Math.random()*2 +
+            "s";
 
         document.body.appendChild(
             heart
@@ -1983,25 +2449,24 @@ function createHearts(){
             heart.remove();
 
         },7000);
-
     }
-
 }
 
 
 /* =====================================================
-   GOLD COLORS
+   💜 RANDOM PURPLE
 ===================================================== */
 
-function randomGold(){
+function randomPurple(){
 
     const colors = [
 
-        "#d4af37",
-        "#ffe9a3",
-        "#b8860b",
-        "#fff1b8",
-        "#8a6a18"
+        "#a855f7",
+        "#c084fc",
+        "#e9d5ff",
+        "#7e22ce",
+        "#6b21a8",
+        "#f0abfc"
 
     ];
 
@@ -2011,7 +2476,6 @@ function randomGold(){
             colors.length
         )
     ];
-
 }
 
 
@@ -2023,13 +2487,13 @@ const quotes = [
 
     "✨ May every dream you have come true.",
 
-    "💛 Keep smiling and keep shining forever.",
+    "💜 Keep smiling and keep shining forever.",
 
     "🎂 Another year, another beautiful chapter.",
 
     "🌟 Your memories are the treasures of life.",
 
-    "❤️ Wishing you endless happiness and success.",
+    "💖 Wishing you endless happiness and success.",
 
     "✨ Life is beautiful when memories are beautiful."
 
@@ -2070,7 +2534,6 @@ function typeQuote(){
                 clearInterval(
                     timer
                 );
-
             }
 
         },50);
@@ -2083,14 +2546,12 @@ function typeQuote(){
     ){
 
         quoteIndex = 0;
-
     }
-
 }
 
 
 /* =====================================================
-   ✨ GOLD STARS
+   ⭐ PURPLE STARS
 ===================================================== */
 
 for(
@@ -2108,18 +2569,20 @@ for(
         "star";
 
     star.style.left =
-        Math.random()*100+"vw";
+        Math.random()*100 +
+        "vw";
 
     star.style.top =
-        Math.random()*100+"vh";
+        Math.random()*100 +
+        "vh";
 
     star.style.animationDelay =
-        Math.random()*4+"s";
+        Math.random()*4 +
+        "s";
 
     document.body.appendChild(
         star
     );
-
 }
 
 </script>
