@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>15.09.2007 ❤️ Birthday</title>
+
+<title>15.09.2007 | Birthday Surprise</title>
 
 <style>
+
+/* =====================================================
+   BLACK + GOLDEN BIRTHDAY THEME
+===================================================== */
+
 *{
     margin:0;
     padding:0;
@@ -17,170 +23,285 @@ html{
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#080014;
-    color:white;
+    font-family:Georgia, "Times New Roman", serif;
+    background:#050505;
+    color:#fff;
     overflow:hidden;
 }
 
-/* =========================
-   ALL SECTIONS
-========================= */
+/* GOLD COLORS */
+
+:root{
+    --gold:#d4af37;
+    --lightGold:#ffe9a3;
+    --darkGold:#8a6a18;
+    --black:#050505;
+    --card:#111111;
+}
+
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 section{
     min-height:100vh;
     width:100%;
+
     display:none;
+
     justify-content:center;
     align-items:center;
     flex-direction:column;
+
     text-align:center;
+
     position:relative;
     overflow:hidden;
+
     padding:25px;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #30230b 0%,
+            #0b0b0b 40%,
+            #000000 100%
+        );
 }
 
 section.active{
     display:flex;
 }
 
-.bg{
-    position:absolute;
-    inset:0;
-    z-index:-5;
+/* GOLDEN BACKGROUND LIGHT */
 
-    background:
-    radial-gradient(circle at 20% 20%,#791ca055,transparent 30%),
-    radial-gradient(circle at 80% 80%,#ff39c055,transparent 30%),
-    linear-gradient(135deg,#09000f,#26002f,#09000f);
+section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:#d4af3720;
+
+    filter:blur(100px);
+
+    animation:
+        goldLight 5s infinite alternate;
+
+    pointer-events:none;
 }
 
-/* =========================
-   BACKGROUND STARS
-========================= */
+@keyframes goldLight{
+
+    from{
+        transform:scale(.8);
+        opacity:.3;
+    }
+
+    to{
+        transform:scale(1.3);
+        opacity:.7;
+    }
+}
+
+/* =====================================================
+   GOLD PARTICLES
+===================================================== */
 
 .star{
+
     position:fixed;
-    width:5px;
-    height:5px;
+
+    width:4px;
+    height:4px;
+
     border-radius:50%;
-    background:white;
+
+    background:var(--gold);
 
     box-shadow:
-    0 0 8px white,
-    0 0 18px #ff6ee4;
+        0 0 8px var(--gold),
+        0 0 20px var(--lightGold);
 
-    animation:starMove 4s infinite alternate;
-    z-index:-1;
+    animation:
+        starAnimation 4s infinite alternate;
+
+    z-index:0;
 }
 
-@keyframes starMove{
+@keyframes starAnimation{
+
     from{
-        transform:translateY(0) scale(.5);
+        transform:
+            translateY(0)
+            scale(.5);
+
         opacity:.2;
     }
 
     to{
-        transform:translateY(-40px) scale(1.5);
+        transform:
+            translateY(-50px)
+            scale(1.5);
+
         opacity:1;
     }
 }
 
-/* =========================
-   LOGIN SCREEN
-========================= */
+/* =====================================================
+   LOGIN
+===================================================== */
 
 #login{
     background:
-    radial-gradient(circle,#68178a,#23002f 50%,#08000e);
+        radial-gradient(
+            circle,
+            #2c2108,
+            #090909 50%,
+            #000 100%
+        );
 }
 
 .login-box{
-    width:min(90%,380px);
-    padding:35px 25px;
 
-    border-radius:30px;
+    position:relative;
+    z-index:5;
 
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
+    width:min(90%,390px);
 
-    border:1px solid #ffffff25;
+    padding:40px 25px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #080808
+        );
+
+    border:
+
+        1px solid var(--gold);
+
+    border-radius:25px;
 
     box-shadow:
-    0 0 30px #c04cff,
-    0 0 90px #8d35aa55;
 
-    animation:loginAppear 1.5s ease;
+        0 0 15px #d4af3755,
+        0 0 50px #d4af3725,
+        inset 0 0 30px #d4af3710;
+
+    animation:
+        loginAppear 1.5s ease;
 }
 
 @keyframes loginAppear{
+
     from{
+
         opacity:0;
-        transform:scale(.7) translateY(50px);
+
+        transform:
+            scale(.7)
+            translateY(50px);
     }
 
     to{
+
         opacity:1;
-        transform:scale(1) translateY(0);
+
+        transform:
+            scale(1)
+            translateY(0);
     }
 }
 
+/* LOCK */
+
 .lock{
+
     font-size:70px;
-    animation:lockGlow 2s infinite alternate;
+
+    filter:
+        drop-shadow(
+            0 0 15px var(--gold)
+        );
+
+    animation:
+        lockGlow 2s infinite alternate;
 }
 
 @keyframes lockGlow{
+
     from{
         transform:scale(1);
-        filter:drop-shadow(0 0 5px #ff4ecd);
     }
 
     to{
-        transform:scale(1.15);
-        filter:drop-shadow(0 0 25px #ff4ecd);
+        transform:scale(1.12);
     }
 }
 
 .login-box h1{
-    font-size:38px;
-    margin:10px 0;
+
+    margin:12px 0;
+
+    font-size:40px;
+
+    color:var(--lightGold);
+
     text-shadow:
-    0 0 10px #ff4ecd,
-    0 0 30px #a83cff;
+        0 0 10px var(--gold),
+        0 0 30px #d4af3766;
 }
 
 .login-box p{
-    color:#f2c9ed;
+
+    color:#d7d7d7;
 }
 
-/* PASSWORD DISPLAY */
+/* =====================================================
+   PASSWORD DISPLAY
+===================================================== */
 
 #display{
+
     width:290px;
+
     margin:25px auto;
 
-    padding:15px;
+    padding:16px;
 
-    background:#00000055;
+    background:#000;
 
-    border:2px solid #b84cff;
+    border:
 
-    border-radius:15px;
+        1px solid var(--gold);
 
-    color:white;
+    border-radius:12px;
+
+    color:var(--lightGold);
 
     font-size:22px;
 
-    letter-spacing:5px;
+    letter-spacing:6px;
 
     box-shadow:
-    0 0 20px #a83cff;
+        0 0 15px #d4af3744;
 }
 
-/* KEYPAD */
+/* =====================================================
+   KEYPAD
+===================================================== */
 
 .keypad{
+
     width:290px;
 
     margin:auto;
@@ -188,7 +309,7 @@ section.active{
     display:grid;
 
     grid-template-columns:
-    repeat(3,1fr);
+        repeat(3,1fr);
 
     gap:12px;
 }
@@ -197,29 +318,31 @@ section.active{
 
     height:60px;
 
-    border:none;
+    border:
 
-    border-radius:15px;
+        1px solid #d4af3777;
+
+    border-radius:12px;
 
     background:
-    linear-gradient(
-        135deg,
-        #401047,
-        #76218d
-    );
+        linear-gradient(
+            145deg,
+            #191919,
+            #050505
+        );
 
-    color:white;
+    color:var(--lightGold);
 
-    font-size:22px;
+    font-size:21px;
 
     font-weight:bold;
 
     cursor:pointer;
 
-    box-shadow:
-    0 0 10px #a83cff55;
+    transition:.25s;
 
-    transition:.2s;
+    box-shadow:
+        inset 0 0 10px #d4af3710;
 }
 
 .keypad button:hover{
@@ -227,43 +350,58 @@ section.active{
     transform:scale(1.08);
 
     background:
-    linear-gradient(
-        135deg,
-        #ff3fc7,
-        #8d4dff
-    );
+        linear-gradient(
+            145deg,
+            #d4af37,
+            #80600e
+        );
+
+    color:#000;
 
     box-shadow:
-    0 0 25px #ff4ecd;
+        0 0 25px #d4af37;
 }
 
 .keypad button:active{
+
     transform:scale(.9);
 }
 
 #loginError{
+
     min-height:25px;
+
     margin-top:18px;
-    color:#ff6b9d;
+
+    color:#d4af37;
 }
 
-/* =========================
-   OPENING
-========================= */
+/* =====================================================
+   OPENING DATE
+===================================================== */
 
 .date{
-    font-size:clamp(45px,12vw,90px);
 
-    letter-spacing:7px;
+    position:relative;
+    z-index:2;
+
+    font-size:
+        clamp(50px,12vw,100px);
+
+    letter-spacing:8px;
 
     font-weight:bold;
 
-    text-shadow:
-    0 0 10px #ff4ecd,
-    0 0 30px #a83cff,
-    0 0 70px #ff4ecd;
+    color:var(--lightGold);
 
-    animation:dateGlow 2s infinite alternate;
+    text-shadow:
+
+        0 0 10px var(--gold),
+        0 0 30px var(--gold),
+        0 0 70px #d4af3766;
+
+    animation:
+        dateGlow 2s infinite alternate;
 }
 
 @keyframes dateGlow{
@@ -278,102 +416,123 @@ section.active{
 }
 
 .openText{
-    margin-top:20px;
-    color:#ffd8f5;
 
-    animation:blink 1.5s infinite;
+    margin-top:20px;
+
+    color:#ddd;
+
+    animation:
+        blink 1.5s infinite;
 }
 
 @keyframes blink{
+
     50%{
         opacity:.3;
     }
 }
 
-/* =========================
-   BUTTON
-========================= */
+/* =====================================================
+   BUTTONS
+===================================================== */
 
-.nextBtn,
-.startBtn{
+.startBtn,
+.nextBtn{
 
     margin-top:25px;
 
     padding:14px 30px;
 
-    border:none;
+    border:
 
-    border-radius:35px;
+        1px solid var(--gold);
+
+    border-radius:30px;
 
     background:
-    linear-gradient(
-        45deg,
-        #ff3fc7,
-        #8d4dff
-    );
 
-    color:white;
+        linear-gradient(
+            135deg,
+            #d4af37,
+            #8a6a18
+        );
 
-    font-size:17px;
+    color:#050505;
+
+    font-size:16px;
 
     font-weight:bold;
 
     cursor:pointer;
 
     box-shadow:
-    0 0 20px #c44cff;
+
+        0 0 15px #d4af3766;
 
     transition:.3s;
 }
 
-.nextBtn:hover,
-.startBtn:hover{
+.startBtn:hover,
+.nextBtn:hover{
 
     transform:scale(1.08);
 
     box-shadow:
-    0 0 35px #ff4ecd;
+        0 0 35px var(--gold);
 }
 
-/* =========================
-   GIFT BOX
-========================= */
+/* =====================================================
+   GIFT
+===================================================== */
 
 .giftBox{
 
-    font-size:140px;
+    position:relative;
+    z-index:2;
+
+    font-size:145px;
 
     cursor:pointer;
 
-    animation:giftBounce 1.5s infinite;
+    filter:
+        drop-shadow(
+            0 0 25px var(--gold)
+        );
+
+    animation:
+        giftBounce 1.5s infinite;
 }
 
 @keyframes giftBounce{
 
     50%{
+
         transform:
-        translateY(-20px)
-        rotate(4deg);
+            translateY(-20px)
+            rotate(4deg);
     }
 }
 
 .giftBox.open{
 
-    animation:giftOpen 1s forwards;
+    animation:
+        giftOpen 1s forwards;
 }
 
 @keyframes giftOpen{
 
     50%{
+
         transform:
-        scale(1.4)
-        rotate(-10deg);
+            scale(1.4)
+            rotate(-10deg);
     }
 
     100%{
+
         transform:
-        scale(0)
-        rotate(30deg);
+            scale(0)
+            rotate(30deg);
 
         opacity:0;
     }
@@ -385,35 +544,42 @@ section.active{
 
     font-size:38px;
 
-    color:#ffb8ef;
+    color:var(--lightGold);
 
     text-shadow:
-    0 0 20px #ff4ecd;
+        0 0 20px var(--gold);
 }
 
-/* =========================
-   SECTION TITLE
-========================= */
+/* =====================================================
+   TITLES
+===================================================== */
 
 .sectionTitle{
 
+    position:relative;
+    z-index:2;
+
     font-size:
-    clamp(30px,7vw,45px);
+        clamp(30px,7vw,48px);
 
     margin-bottom:30px;
 
-    color:#ffb8f2;
+    color:var(--lightGold);
 
     text-shadow:
-    0 0 10px #ff4ecd,
-    0 0 30px #a83cff;
+
+        0 0 10px var(--gold),
+        0 0 30px #d4af3755;
 }
 
-/* =========================
-   PHOTO REVEAL
-========================= */
+/* =====================================================
+   PHOTO SECTION
+===================================================== */
 
 .photoGrid{
+
+    position:relative;
+    z-index:2;
 
     display:flex;
 
@@ -421,7 +587,7 @@ section.active{
 
     justify-content:center;
 
-    gap:20px;
+    gap:25px;
 
     max-width:900px;
 }
@@ -429,51 +595,45 @@ section.active{
 .photoCard{
 
     width:190px;
-
     height:240px;
 
-    padding:5px;
+    padding:4px;
 
     border-radius:20px;
 
     background:
-    linear-gradient(
-        45deg,
-        #ff4ecd,
-        #8d4dff,
-        #ffb2ef
-    );
+        linear-gradient(
+            45deg,
+            #8a6a18,
+            #ffe9a3,
+            #d4af37,
+            #8a6a18
+        );
 
-    background-size:400% 400%;
+    background-size:
+        400% 400%;
 
     animation:
-    borderMove 4s infinite,
-    photoFloat 3s infinite ease-in-out;
+        goldBorder 4s infinite,
+        photoFloat 3s infinite ease-in-out;
 
     box-shadow:
-    0 0 25px #b94cff;
-}
-
-.photoCard:nth-child(2){
-    animation-delay:.5s;
-}
-
-.photoCard:nth-child(3){
-    animation-delay:1s;
+        0 0 25px #d4af3766;
 }
 
 .photoCard img{
 
     width:100%;
-
     height:100%;
 
     object-fit:cover;
 
-    border-radius:15px;
+    border-radius:16px;
+
+    background:#111;
 }
 
-@keyframes borderMove{
+@keyframes goldBorder{
 
     0%{
         background-position:0% 50%;
@@ -491,26 +651,33 @@ section.active{
 @keyframes photoFloat{
 
     50%{
+
         transform:
-        translateY(-15px)
-        rotate(2deg);
+            translateY(-15px)
+            rotate(2deg);
     }
 }
 
-/* =========================
+/* =====================================================
    CAKE
-========================= */
+===================================================== */
 
 .cake{
+
+    position:relative;
+    z-index:2;
 
     font-size:150px;
 
     cursor:pointer;
 
-    animation:cakeFloat 2s infinite ease-in-out;
-
     filter:
-    drop-shadow(0 0 20px #ff4ecd);
+        drop-shadow(
+            0 0 25px var(--gold)
+        );
+
+    animation:
+        cakeFloat 2s infinite ease-in-out;
 }
 
 @keyframes cakeFloat{
@@ -522,16 +689,16 @@ section.active{
 
 .candleText{
 
+    color:#ddd;
+
+    line-height:1.7;
+
     margin-top:20px;
-
-    color:#ffd8f5;
-
-    line-height:1.6;
 }
 
-/* =========================
+/* =====================================================
    FLASH
-========================= */
+===================================================== */
 
 .flash{
 
@@ -539,7 +706,13 @@ section.active{
 
     inset:0;
 
-    background:white;
+    background:
+        radial-gradient(
+            circle,
+            #fff,
+            #ffe9a3,
+            #d4af37
+        );
 
     z-index:500;
 
@@ -551,7 +724,7 @@ section.active{
 .flash.show{
 
     animation:
-    flashAnimation .8s;
+        flashAnimation .8s;
 }
 
 @keyframes flashAnimation{
@@ -569,11 +742,14 @@ section.active{
     }
 }
 
-/* =========================
+/* =====================================================
    CHILDHOOD
-========================= */
+===================================================== */
 
 .timeline{
+
+    position:relative;
+    z-index:2;
 
     width:min(90%,850px);
 
@@ -600,33 +776,42 @@ section.active{
 
     padding:15px;
 
+    background:
+        linear-gradient(
+            135deg,
+            #151515,
+            #080808
+        );
+
+    border:
+
+        1px solid #d4af3766;
+
     border-radius:20px;
 
-    background:#ffffff0d;
-
-    border:1px solid #ff9bea55;
-
     box-shadow:
-    0 0 20px #8c36aa55;
+        0 0 20px #d4af3722;
 
     animation:
-    memorySlide 1s ease;
+        memorySlide 1s ease;
 }
 
 .memory img{
 
     width:140px;
-
     height:140px;
 
     object-fit:cover;
 
     border-radius:15px;
+
+    border:
+        2px solid var(--gold);
 }
 
 .memory p{
 
-    color:#ffdafa;
+    color:#ddd;
 
     font-size:18px;
 
@@ -640,7 +825,7 @@ section.active{
         opacity:0;
 
         transform:
-        translateX(-100px);
+            translateX(-100px);
     }
 
     to{
@@ -648,15 +833,18 @@ section.active{
         opacity:1;
 
         transform:
-        translateX(0);
+            translateX(0);
     }
 }
 
-/* =========================
+/* =====================================================
    FRIENDS
-========================= */
+===================================================== */
 
 .friendGrid{
+
+    position:relative;
+    z-index:2;
 
     display:flex;
 
@@ -675,25 +863,19 @@ section.active{
 
     padding:12px;
 
-    background:#ffffff10;
+    background:#111;
 
-    border-radius:25px;
+    border:
 
-    border:1px solid #ff91e855;
+        1px solid #d4af3777;
+
+    border-radius:20px;
 
     animation:
-    friendFloat 3s infinite alternate;
+        friendFloat 3s infinite alternate;
 
     box-shadow:
-    0 0 15px #9d3fc855;
-}
-
-.friendCard:nth-child(2){
-    animation-delay:.5s;
-}
-
-.friendCard:nth-child(3){
-    animation-delay:1s;
+        0 0 15px #d4af3722;
 }
 
 .friendCard img{
@@ -704,14 +886,17 @@ section.active{
 
     object-fit:cover;
 
-    border-radius:18px;
+    border-radius:15px;
+
+    border:
+        1px solid var(--gold);
 }
 
 .friendCard p{
 
     margin-top:10px;
 
-    color:#ffc9f2;
+    color:var(--lightGold);
 }
 
 @keyframes friendFloat{
@@ -719,23 +904,26 @@ section.active{
     to{
 
         transform:
-        translateY(-15px)
-        rotate(2deg);
+            translateY(-15px)
+            rotate(2deg);
 
         box-shadow:
-        0 0 35px #d74cff;
+            0 0 30px #d4af3766;
     }
 }
 
-/* =========================
+/* =====================================================
    QUOTES
-========================= */
+===================================================== */
 
 .quoteBox{
 
+    position:relative;
+    z-index:2;
+
     width:min(90%,700px);
 
-    min-height:170px;
+    min-height:180px;
 
     padding:35px;
 
@@ -745,14 +933,21 @@ section.active{
 
     align-items:center;
 
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #070707
+        );
+
+    border:
+
+        1px solid var(--gold);
+
     border-radius:25px;
 
-    background:#ffffff0d;
-
-    border:1px solid #ff9bea66;
-
     box-shadow:
-    0 0 35px #a938cc66;
+        0 0 30px #d4af3733;
 }
 
 .quote{
@@ -761,33 +956,41 @@ section.active{
 
     line-height:1.6;
 
-    color:#ffe3fa;
+    color:var(--lightGold);
 
-    border-right:3px solid #ff75dc;
+    border-right:
+        3px solid var(--gold);
+
+    padding-right:5px;
 }
 
-/* =========================
-   BIKE
-========================= */
+/* =====================================================
+   🏍️ BIKE PHOTO
+===================================================== */
 
 .bikePhoto{
 
-    width:min(90vw,520px);
+    position:relative;
+    z-index:2;
 
-    height:340px;
+    width:min(90vw,550px);
+
+    height:350px;
 
     object-fit:cover;
 
     border-radius:25px;
 
-    border:5px solid #d34cff;
+    border:
+        4px solid var(--gold);
 
     box-shadow:
-    0 0 20px #ff4ecd,
-    0 0 60px #9d4dff;
+
+        0 0 20px #d4af37,
+        0 0 60px #d4af3744;
 
     animation:
-    bikeAnimation 4s infinite alternate;
+        bikeAnimation 4s infinite alternate;
 }
 
 @keyframes bikeAnimation{
@@ -795,24 +998,30 @@ section.active{
     to{
 
         transform:
-        scale(1.05)
-        rotate(1deg);
+            scale(1.05)
+            rotate(1deg);
+
+        box-shadow:
+            0 0 40px var(--gold);
     }
 }
 
-/* =========================
+/* =====================================================
    FINAL
-========================= */
+===================================================== */
 
 .finalTitle{
 
-    font-size:
-    clamp(40px,10vw,80px);
+    position:relative;
+    z-index:2;
 
-    color:white;
+    font-size:
+        clamp(40px,10vw,80px);
+
+    color:var(--lightGold);
 
     animation:
-    finalGlow 2s infinite alternate;
+        finalGlow 2s infinite alternate;
 }
 
 @keyframes finalGlow{
@@ -820,53 +1029,62 @@ section.active{
     from{
 
         text-shadow:
-        0 0 10px #ff4ecd;
+            0 0 10px var(--gold);
     }
 
     to{
 
         text-shadow:
-        0 0 20px #ff4ecd,
-        0 0 50px #9d4dff,
-        0 0 100px #ff8eea;
+
+            0 0 20px var(--gold),
+            0 0 50px var(--gold),
+            0 0 100px #d4af3766;
     }
 }
 
 .finalDate{
 
+    position:relative;
+    z-index:2;
+
     margin-top:25px;
 
     font-size:45px;
 
-    color:#ffb6ed;
+    color:var(--lightGold);
 
     animation:
-    datePulse 2s infinite alternate;
+        datePulse 2s infinite alternate;
 }
 
 @keyframes datePulse{
 
     to{
+
         transform:scale(1.1);
+
         text-shadow:
-        0 0 30px #ff4ecd;
+            0 0 30px var(--gold);
     }
 }
 
 .finalMessage{
 
+    position:relative;
+    z-index:2;
+
     margin-top:25px;
 
     font-size:20px;
 
-    line-height:1.7;
+    line-height:1.8;
 
-    color:#ffe1fa;
+    color:#ddd;
 }
 
-/* =========================
+/* =====================================================
    HEARTS
-========================= */
+===================================================== */
 
 .heart{
 
@@ -881,7 +1099,7 @@ section.active{
     pointer-events:none;
 
     animation:
-    heartUp 6s linear forwards;
+        heartUp 6s linear forwards;
 }
 
 @keyframes heartUp{
@@ -889,8 +1107,8 @@ section.active{
     0%{
 
         transform:
-        translateY(0)
-        scale(.5);
+            translateY(0)
+            scale(.5);
 
         opacity:0;
     }
@@ -902,17 +1120,17 @@ section.active{
     100%{
 
         transform:
-        translateY(-110vh)
-        scale(1.5)
-        rotate(30deg);
+            translateY(-110vh)
+            scale(1.5)
+            rotate(30deg);
 
         opacity:0;
     }
 }
 
-/* =========================
-   CONFETTI
-========================= */
+/* =====================================================
+   GOLD CONFETTI
+===================================================== */
 
 .confetti{
 
@@ -920,14 +1138,16 @@ section.active{
 
     top:-20px;
 
-    width:10px;
-
+    width:9px;
     height:18px;
 
     z-index:400;
 
+    background:
+        var(--gold);
+
     animation:
-    confettiFall 3s linear forwards;
+        confettiFall 3s linear forwards;
 }
 
 @keyframes confettiFall{
@@ -935,16 +1155,16 @@ section.active{
     to{
 
         transform:
-        translateY(110vh)
-        rotate(720deg);
+            translateY(110vh)
+            rotate(720deg);
 
         opacity:0;
     }
 }
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:600px){
 
@@ -958,48 +1178,39 @@ section.active{
     }
 
     .photoCard{
-
         width:140px;
-
         height:190px;
     }
 
     .memory{
-
         flex-direction:column;
     }
 
     .memory img{
-
         width:200px;
-
         height:180px;
     }
 
     .friendCard{
-
         width:145px;
     }
 
     .friendCard img{
-
         height:150px;
     }
 
     .cake{
-
         font-size:110px;
     }
 
     .bikePhoto{
-
         height:250px;
     }
 
     .quote{
-
         font-size:20px;
     }
+
 }
 
 </style>
@@ -1008,448 +1219,434 @@ section.active{
 <body>
 
 
-<!-- ==========================================
+<!-- =====================================================
      🔐 LOGIN
-========================================== -->
+===================================================== -->
 
 <section id="login" class="active">
 
-<div class="login-box">
+    <div class="login-box">
 
-    <div class="lock">
-        🔐
+        <div class="lock">
+            🔐
+        </div>
+
+        <h1>
+            Welcome
+        </h1>
+
+        <p>
+            Enter the special date
+        </p>
+
+        <div id="display">
+            _ _ _ _ _ _ _ _
+        </div>
+
+        <div class="keypad">
+
+            <button onclick="pressNumber('1')">1</button>
+            <button onclick="pressNumber('2')">2</button>
+            <button onclick="pressNumber('3')">3</button>
+
+            <button onclick="pressNumber('4')">4</button>
+            <button onclick="pressNumber('5')">5</button>
+            <button onclick="pressNumber('6')">6</button>
+
+            <button onclick="pressNumber('7')">7</button>
+            <button onclick="pressNumber('8')">8</button>
+            <button onclick="pressNumber('9')">9</button>
+
+            <button onclick="clearPassword()">⌫</button>
+            <button onclick="pressNumber('0')">0</button>
+            <button onclick="checkPassword()">🔓</button>
+
+        </div>
+
+        <p id="loginError"></p>
+
+        <p style="margin-top:15px;font-size:13px;color:#b99b4a;">
+            ✨ A special date is waiting...
+        </p>
+
     </div>
-
-    <h1>
-        Welcome ❤️
-    </h1>
-
-    <p>
-        Enter the special date
-    </p>
-
-    <div id="display">
-        _ _ _ _ _ _ _ _
-    </div>
-
-    <div class="keypad">
-
-        <button onclick="pressNumber('1')">1</button>
-        <button onclick="pressNumber('2')">2</button>
-        <button onclick="pressNumber('3')">3</button>
-
-        <button onclick="pressNumber('4')">4</button>
-        <button onclick="pressNumber('5')">5</button>
-        <button onclick="pressNumber('6')">6</button>
-
-        <button onclick="pressNumber('7')">7</button>
-        <button onclick="pressNumber('8')">8</button>
-        <button onclick="pressNumber('9')">9</button>
-
-        <button onclick="clearPassword()">⌫</button>
-        <button onclick="pressNumber('0')">0</button>
-        <button onclick="checkPassword()">🔓</button>
-
-    </div>
-
-    <p id="loginError"></p>
-
-    <p style="margin-top:15px;font-size:13px;">
-        ✨ A special date is waiting...
-    </p>
-
-</div>
 
 </section>
 
 
-<!-- ==========================================
-     🎁 OPENING
-========================================== -->
+<!-- =====================================================
+     ✨ OPENING
+===================================================== -->
 
 <section id="opening">
 
-<div class="bg"></div>
+    <div class="date">
+        15.09.2007
+    </div>
 
-<div class="date">
-15.09.2007
-</div>
+    <p class="openText">
+        ✨ A Special Day Was Born ✨
+    </p>
 
-<p class="openText">
-✨ A Special Day Was Born ✨
-</p>
+    <button
+        class="startBtn"
+        onclick="openGift()">
 
-<button class="startBtn" onclick="openGift()">
-🎁 OPEN THE SURPRISE
-</button>
+        🎁 OPEN THE SURPRISE
+
+    </button>
 
 </section>
 
 
-<!-- ==========================================
+<!-- =====================================================
      🎁 GIFT
-========================================== -->
+===================================================== -->
 
 <section id="gift">
 
-<div class="bg"></div>
+    <div
+        id="giftBox"
+        class="giftBox"
+        onclick="openBirthday()">
 
-<div
-id="giftBox"
-class="giftBox"
-onclick="openBirthday()">
+        🎁
 
-🎁
+    </div>
 
-</div>
+    <h1 class="giftTitle">
+        Tap The Gift
+    </h1>
 
-<h1 class="giftTitle">
-Tap The Gift 🎁
-</h1>
-
-<p style="margin-top:15px;color:#ffdafa;">
-Something special is waiting inside... ❤️
-</p>
+    <p style="margin-top:15px;color:#bbb;">
+        Something special is waiting inside... ✨
+    </p>
 
 </section>
 
 
-<!-- ==========================================
-     📸 PHOTO REVEAL
-========================================== -->
+<!-- =====================================================
+     📸 PHOTOS
+===================================================== -->
 
 <section id="photos">
 
-<div class="bg"></div>
+    <h1 class="sectionTitle">
+        📸 Beautiful Memories
+    </h1>
 
-<h1 class="sectionTitle">
-📸 Beautiful Memories
-</h1>
+    <div class="photoGrid">
 
-<div class="photoGrid">
+        <div class="photoCard">
 
-<div class="photoCard">
+            <img
+                src="./photo1.jpg"
+                alt="Birthday Photo">
 
-<img
-src="./photo.jpj.jpeg"
-alt="Birthday Photo">
+        </div>
 
-</div>
+        <div class="photoCard">
 
-<div class="photoCard">
+            <img
+                src="./photo2.jpg"
+                alt="Memory Photo">
 
-<img
-src="./photo2.jpg"
-alt="Memory Photo">
+        </div>
 
-</div>
+        <div class="photoCard">
 
-<div class="photoCard">
+            <img
+                src="./photo3.jpg"
+                alt="Memory Photo">
 
-<img
-src="./photo3.jpg"
-alt="Memory Photo">
+        </div>
 
-</div>
+    </div>
 
-</div>
+    <p style="margin-top:25px;color:#bbb;">
+        ✨ Every picture has a story
+    </p>
 
-<p style="margin-top:25px;color:#ffdafa;">
-✨ Every picture has a story ❤️
-</p>
+    <button
+        class="nextBtn"
+        onclick="showSection('cake')">
 
-<button
-class="nextBtn"
-onclick="showSection('cake')">
+        Next → 🎂
 
-Next → 🎂
-
-</button>
+    </button>
 
 </section>
 
 
-<!-- ==========================================
+<!-- =====================================================
      🎂 CAKE
-========================================== -->
+===================================================== -->
 
 <section id="cake">
 
-<div class="bg"></div>
+    <h1 class="sectionTitle">
+        🎂 Make A Wish!
+    </h1>
 
-<h1 class="sectionTitle">
-🎂 Make A Wish!
-</h1>
+    <div
+        id="cakeEmoji"
+        class="cake"
+        onclick="turnOffCandle()">
 
-<div
-id="cakeEmoji"
-class="cake"
-onclick="turnOffCandle()">
+        🕯️🎂🕯️
 
-🕯️🎂🕯️
+    </div>
 
-</div>
+    <p class="candleText">
 
-<p class="candleText">
+        🔥 Candles are ON
 
-🔥 Candles are ON
+        <br>
 
-<br>
+        Tap the cake to blow the candles OFF!
 
-Tap the cake to blow the candles OFF! 💨
-
-</p>
+    </p>
 
 </section>
 
 
-<!-- FLASH EFFECT -->
+<!-- FLASH -->
 
 <div
-id="flash"
-class="flash">
+    id="flash"
+    class="flash">
 </div>
 
 
-<!-- ==========================================
+<!-- =====================================================
      👶 CHILDHOOD
-========================================== -->
+===================================================== -->
 
 <section id="childhood">
 
-<div class="bg"></div>
+    <h1 class="sectionTitle">
+        👶 Childhood Memories
+    </h1>
 
-<h1 class="sectionTitle">
-👶 Childhood Memories
-</h1>
+    <div class="timeline">
 
-<div class="timeline">
+        <div class="memory">
 
-<div class="memory">
+            <img
+                src="./childhood1.jpg"
+                alt="Childhood">
 
-<img
-src="./childhood1.jpg"
-alt="Childhood">
+            <p>
+                👶 Little moments,
+                big memories.
+                <br>
+                ✨ The beginning of a beautiful journey.
+            </p>
 
-<p>
-👶 Little moments,<br>
-big memories.<br>
-✨ The beginning of a beautiful journey.
-</p>
+        </div>
 
-</div>
+        <div class="memory">
 
+            <img
+                src="./childhood2.jpg"
+                alt="Childhood">
 
-<div class="memory">
+            <p>
+                🌟 Childhood days
+                that will always stay special.
+            </p>
 
-<img
-src="./childhood2.jpg"
-alt="Childhood">
+        </div>
 
-<p>
-🌸 Childhood days<br>
-that will always stay special.
-</p>
+        <div class="memory">
 
-</div>
+            <img
+                src="./childhood3.jpg"
+                alt="Childhood">
 
+            <p>
+                ❤️ Those innocent smiles
+                and unforgettable memories.
+            </p>
 
-<div class="memory">
+        </div>
 
-<img
-src="./childhood3.jpg"
-alt="Childhood">
+    </div>
 
-<p>
-❤️ Those innocent smiles<br>
-and unforgettable memories.
-</p>
+    <button
+        class="nextBtn"
+        onclick="showSection('friends')">
 
-</div>
+        Next → 👬
 
-</div>
-
-<button
-class="nextBtn"
-onclick="showSection('friends')">
-
-Next → 👬
-
-</button>
+    </button>
 
 </section>
 
 
-<!-- ==========================================
+<!-- =====================================================
      👬 FRIENDS
-========================================== -->
+===================================================== -->
 
 <section id="friends">
 
-<div class="bg"></div>
+    <h1 class="sectionTitle">
+        👬 Friends Forever
+    </h1>
 
-<h1 class="sectionTitle">
-👬 Friends Forever
-</h1>
+    <div class="friendGrid">
 
-<div class="friendGrid">
+        <div class="friendCard">
 
-<div class="friendCard">
+            <img
+                src="./friend1.jpg"
+                alt="Friend">
 
-<img
-src="./friend1.jpg"
-alt="Friend">
+            <p>
+                ❤️ Best Memories
+            </p>
 
-<p>
-❤️ Best Memories
-</p>
+        </div>
 
-</div>
+        <div class="friendCard">
 
+            <img
+                src="./friend2.jpg"
+                alt="Friend">
 
-<div class="friendCard">
+            <p>
+                ✨ Crazy Moments
+            </p>
 
-<img
-src="./friend2.jpg"
-alt="Friend">
+        </div>
 
-<p>
-💜 Crazy Moments
-</p>
+        <div class="friendCard">
 
-</div>
+            <img
+                src="./friend3.jpg"
+                alt="Friend">
 
+            <p>
+                😂 Unlimited Fun
+            </p>
 
-<div class="friendCard">
+        </div>
 
-<img
-src="./friend3.jpg"
-alt="Friend">
+    </div>
 
-<p>
-😂 Unlimited Fun
-</p>
+    <button
+        class="nextBtn"
+        onclick="showSection('quotes')">
 
-</div>
+        Next → 💬
 
-</div>
-
-<button
-class="nextBtn"
-onclick="showSection('quotes')">
-
-Next → 💬
-
-</button>
+    </button>
 
 </section>
 
 
-<!-- ==========================================
+<!-- =====================================================
      💬 QUOTES
-========================================== -->
+===================================================== -->
 
 <section id="quotes">
 
-<div class="bg"></div>
+    <h1 class="sectionTitle">
+        💬 Birthday Quotes
+    </h1>
 
-<h1 class="sectionTitle">
-💬 Birthday Quotes
-</h1>
+    <div class="quoteBox">
 
-<div class="quoteBox">
+        <p
+            id="quoteText"
+            class="quote">
+        </p>
 
-<p
-id="quoteText"
-class="quote">
+    </div>
 
-</p>
+    <button
+        class="nextBtn"
+        onclick="showSection('bike')">
 
-</div>
+        Next → 🏍️
 
-<button
-class="nextBtn"
-onclick="showSection('bike')">
-
-Next → 🏍️
-
-</button>
+    </button>
 
 </section>
 
 
-<!-- ==========================================
+<!-- =====================================================
      🏍️ BIKE
-========================================== -->
+===================================================== -->
 
 <section id="bike">
 
-<div class="bg"></div>
+    <h1 class="sectionTitle">
+        🏍️ Favorite Memory
+    </h1>
 
-<h1 class="sectionTitle">
-🏍️ Favorite Memory
-</h1>
+    <!-- PHOTO.JPG IS USED HERE -->
 
-<img
-class="bikePhoto"
-src="./bike.jpg"
-alt="Bike Memory">
+    <img
+        class="bikePhoto"
+        src="./photo.jpg"
+        alt="Bike Memory">
 
-<p style="margin-top:25px;color:#ffdafa;">
-🏍️ Ride. Smile. Create Memories. ❤️
-</p>
+    <p style="margin-top:25px;color:#ccc;">
+        🏍️ Ride. Smile. Create Memories.
+    </p>
 
-<button
-class="nextBtn"
-onclick="showSection('final')">
+    <button
+        class="nextBtn"
+        onclick="showSection('final')">
 
-Final Surprise → 💜
+        Final Surprise → ✨
 
-</button>
+    </button>
 
 </section>
 
 
-<!-- ==========================================
-     💜 FINAL
-========================================== -->
+<!-- =====================================================
+     💛 FINAL SURPRISE
+===================================================== -->
 
 <section id="final">
 
-<div class="bg"></div>
+    <h1 class="finalTitle">
+        HAPPY BIRTHDAY
+    </h1>
 
-<h1 class="finalTitle">
-🎉 HAPPY BIRTHDAY ❤️
-</h1>
+    <div class="finalDate">
+        15.09.2007
+    </div>
 
-<div class="finalDate">
-15.09.2007
-</div>
+    <p class="finalMessage">
 
-<p class="finalMessage">
+        ✨ May your life be filled with
 
-✨ May your life be filled with<br>
+        <br>
 
-happiness, success, love & beautiful memories. 💜
+        happiness, success, love & beautiful memories.
 
-<br><br>
+        <br><br>
 
-🎂 Have an Amazing Birthday! ❤️
+        🎂 Have an Amazing Birthday!
 
-<br><br>
+        <br><br>
 
-🌟 Keep Smiling. Keep Shining. 🌟
+        ✨ Keep Smiling. Keep Shining. ✨
 
-</p>
+    </p>
 
 </section>
 
 
 <script>
 
-/* ==========================================
-   🔐 LOGIN PASSWORD
-========================================== */
+/* =====================================================
+   🔐 PASSWORD
+===================================================== */
 
 let enteredPassword = "";
 
@@ -1458,7 +1655,9 @@ const correctPassword = "15092007";
 
 function pressNumber(number){
 
-    if(enteredPassword.length >= 8){
+    if(
+        enteredPassword.length >= 8
+    ){
         return;
     }
 
@@ -1466,7 +1665,9 @@ function pressNumber(number){
 
     updateDisplay();
 
-    if(enteredPassword.length === 8){
+    if(
+        enteredPassword.length === 8
+    ){
 
         setTimeout(
             checkPassword,
@@ -1510,7 +1711,7 @@ function clearPassword(){
 
     document.getElementById(
         "loginError"
-    ).innerText="";
+    ).innerText = "";
 
 }
 
@@ -1528,10 +1729,10 @@ function checkPassword(){
     ){
 
         error.style.color =
-            "#7dffb2";
+            "#d4af37";
 
         error.innerText =
-            "🔓 Login Successful! ❤️";
+            "🔓 ACCESS GRANTED ✨";
 
         createConfetti();
 
@@ -1550,12 +1751,12 @@ function checkPassword(){
     else{
 
         error.style.color =
-            "#ff6b9d";
+            "#ff5555";
 
         error.innerText =
-            "❌ Wrong Password!";
+            "❌ WRONG PASSWORD";
 
-        enteredPassword="";
+        enteredPassword = "";
 
         setTimeout(
             updateDisplay,
@@ -1567,9 +1768,9 @@ function checkPassword(){
 }
 
 
-/* ==========================================
+/* =====================================================
    SECTION CHANGE
-========================================== */
+===================================================== */
 
 function showSection(id){
 
@@ -1589,12 +1790,9 @@ function showSection(id){
             "active"
         );
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-    if(id === "quotes"){
+    if(
+        id === "quotes"
+    ){
 
         setTimeout(
             typeQuote,
@@ -1606,20 +1804,18 @@ function showSection(id){
 }
 
 
-/* ==========================================
-   🎁 OPENING
-========================================== */
+/* =====================================================
+   🎁 GIFT
+===================================================== */
 
 function openGift(){
 
-    showSection("gift");
+    showSection(
+        "gift"
+    );
 
 }
 
-
-/* ==========================================
-   🎁 GIFT OPEN
-========================================== */
 
 function openBirthday(){
 
@@ -1647,9 +1843,9 @@ function openBirthday(){
 }
 
 
-/* ==========================================
-   🎂 CANDLE OFF
-========================================== */
+/* =====================================================
+   🎂 CANDLE
+===================================================== */
 
 function turnOffCandle(){
 
@@ -1689,9 +1885,9 @@ function turnOffCandle(){
 }
 
 
-/* ==========================================
-   🎉 CONFETTI
-========================================== */
+/* =====================================================
+   ✨ CONFETTI
+===================================================== */
 
 function createConfetti(){
 
@@ -1713,11 +1909,13 @@ function createConfetti(){
             Math.random()*100+"vw";
 
         confetti.style.background =
-            randomColor();
+            randomGold();
 
         confetti.style.animationDuration =
-            (2+
-            Math.random()*3)+"s";
+            (
+                2 +
+                Math.random()*3
+            )+"s";
 
         document.body.appendChild(
             confetti
@@ -1734,16 +1932,16 @@ function createConfetti(){
 }
 
 
-/* ==========================================
+/* =====================================================
    ❤️ HEARTS
-========================================== */
+===================================================== */
 
 function createHearts(){
 
-    const heartList=[
+    const hearts = [
         "❤️",
-        "💜",
-        "💗",
+        "💛",
+        "✨",
         "💖",
         "💕"
     ];
@@ -1763,10 +1961,10 @@ function createHearts(){
             "heart";
 
         heart.innerText =
-            heartList[
+            hearts[
                 Math.floor(
-                    Math.random()*
-                    heartList.length
+                    Math.random() *
+                    hearts.length
                 )
             ];
 
@@ -1791,26 +1989,25 @@ function createHearts(){
 }
 
 
-/* ==========================================
-   RANDOM COLORS
-========================================== */
+/* =====================================================
+   GOLD COLORS
+===================================================== */
 
-function randomColor(){
+function randomGold(){
 
-    const colors=[
+    const colors = [
 
-        "#ff4ecd",
-        "#9d4dff",
-        "#ffdd55",
-        "#55eaff",
-        "#ff6b6b",
-        "#ffffff"
+        "#d4af37",
+        "#ffe9a3",
+        "#b8860b",
+        "#fff1b8",
+        "#8a6a18"
 
     ];
 
     return colors[
         Math.floor(
-            Math.random()*
+            Math.random() *
             colors.length
         )
     ];
@@ -1818,27 +2015,27 @@ function randomColor(){
 }
 
 
-/* ==========================================
+/* =====================================================
    💬 QUOTES
-========================================== */
+===================================================== */
 
-const quotes=[
+const quotes = [
 
-"✨ May every dream you have come true. ❤️",
+    "✨ May every dream you have come true.",
 
-"💜 Keep smiling and keep shining forever.",
+    "💛 Keep smiling and keep shining forever.",
 
-"🎂 Another year, another beautiful chapter.",
+    "🎂 Another year, another beautiful chapter.",
 
-"🌸 Your memories are the treasures of life.",
+    "🌟 Your memories are the treasures of life.",
 
-"❤️ Wishing you endless happiness and success.",
+    "❤️ Wishing you endless happiness and success.",
 
-"✨ Life is beautiful when memories are beautiful."
+    "✨ Life is beautiful when memories are beautiful."
 
 ];
 
-let quoteIndex=0;
+let quoteIndex = 0;
 
 
 function typeQuote(){
@@ -1853,9 +2050,9 @@ function typeQuote(){
             quoteIndex
         ];
 
-    let index=0;
+    let index = 0;
 
-    element.innerHTML="";
+    element.innerHTML = "";
 
     const timer =
         setInterval(()=>{
@@ -1885,20 +2082,20 @@ function typeQuote(){
         quotes.length
     ){
 
-        quoteIndex=0;
+        quoteIndex = 0;
 
     }
 
 }
 
 
-/* ==========================================
-   ⭐ BACKGROUND STARS
-========================================== */
+/* =====================================================
+   ✨ GOLD STARS
+===================================================== */
 
 for(
     let i=0;
-    i<50;
+    i<60;
     i++
 ){
 
