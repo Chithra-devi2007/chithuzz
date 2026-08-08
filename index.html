@@ -3,272 +3,1216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday ❤️</title>
+<title>15.09.2007 ❤️ Birthday</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    min-height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle, #4b176d, #160020 70%);
-    font-family: Arial, sans-serif;
+html{
+    scroll-behavior:smooth;
 }
 
-/* Birthday Card */
-.birthday-card {
-    position: relative;
-    z-index: 10;
-    width: 340px;
-    padding: 30px 20px;
-    text-align: center;
-    border-radius: 30px;
-    background: rgba(255,255,255,0.10);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 30px #c45cff;
+body{
+    font-family:Arial,sans-serif;
+    background:#080014;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* Heading */
-.birthday-card h1 {
-    color: white;
-    font-size: 30px;
-    margin-bottom: 25px;
-    animation: titleGlow 2s infinite alternate;
+section{
+    min-height:100vh;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    padding:30px 20px;
 }
 
-@keyframes titleGlow {
-    from {
-        text-shadow: 0 0 8px #ff69d4;
+section.active{
+    display:flex;
+}
+
+/* =========================
+   BACKGROUND PARTICLES
+========================= */
+
+.bg{
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%,#681c8d55,transparent 30%),
+    radial-gradient(circle at 80% 80%,#ff3db455,transparent 30%),
+    linear-gradient(135deg,#080014,#21002e,#080014);
+    z-index:-2;
+}
+
+.star{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 12px #ff8eea;
+    animation:starMove 4s infinite alternate;
+}
+
+@keyframes starMove{
+    from{
+        transform:translateY(0) scale(.5);
+        opacity:.3;
     }
-
-    to {
-        text-shadow:
-        0 0 10px #ff69d4,
-        0 0 25px #c45cff,
-        0 0 45px #ff9bea;
+    to{
+        transform:translateY(-40px) scale(1.5);
+        opacity:1;
     }
 }
 
-/* Animated Photo */
-.photo-container {
-    width: 220px;
-    height: 220px;
-    margin: auto;
-    padding: 7px;
-    border-radius: 50%;
-    background: linear-gradient(
-        45deg,
-        #ff4ecd,
-        #8b5cff,
-        #ffb3f7,
-        #7b2cff
-    );
-    background-size: 400% 400%;
-    animation: gradientMove 4s ease infinite,
-               photoRotate 8s linear infinite;
+/* =========================
+   OPENING
+========================= */
+
+#opening{
+    flex-direction:column;
+}
+
+.date{
+    font-size:clamp(45px,12vw,90px);
+    font-weight:bold;
+    letter-spacing:8px;
+    color:#fff;
+    text-shadow:
+    0 0 10px #ff5cd8,
+    0 0 30px #b94dff,
+    0 0 60px #ff4ecd;
+    animation:dateGlow 2s infinite alternate;
+}
+
+@keyframes dateGlow{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.08);
+    }
+}
+
+.openText{
+    margin-top:25px;
+    color:#ffdafa;
+    animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:.3;}
+}
+
+.startBtn{
+    margin-top:30px;
+    padding:15px 35px;
+    border:0;
+    border-radius:40px;
+    background:linear-gradient(45deg,#ff3fc7,#9d4dff);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 25px #d24cff;
+    transition:.3s;
+}
+
+.startBtn:hover{
+    transform:scale(1.1);
+}
+
+/* =========================
+   GIFT BOX
+========================= */
+
+#gift{
+    flex-direction:column;
+}
+
+.giftBox{
+    font-size:130px;
+    cursor:pointer;
+    animation:giftBounce 1.5s infinite;
+}
+
+@keyframes giftBounce{
+    50%{
+        transform:translateY(-20px) rotate(3deg);
+    }
+}
+
+.giftBox.open{
+    animation:giftOpen 1s forwards;
+}
+
+@keyframes giftOpen{
+    50%{
+        transform:scale(1.4) rotate(-10deg);
+    }
+    100%{
+        transform:scale(0) rotate(30deg);
+        opacity:0;
+    }
+}
+
+.giftTitle{
+    margin-top:20px;
+    font-size:38px;
+    color:#ffb5f0;
+    text-shadow:0 0 25px #ff4ecd;
+}
+
+/* =========================
+   PHOTO REVEAL
+========================= */
+
+#photos{
+    flex-direction:column;
+}
+
+.sectionTitle{
+    font-size:40px;
+    margin-bottom:30px;
+    color:#ffb8f2;
+    text-shadow:0 0 20px #d34cff;
+}
+
+.photoGrid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    max-width:900px;
+}
+
+.photoCard{
+    width:190px;
+    height:240px;
+    padding:5px;
+    border-radius:20px;
+    background:linear-gradient(45deg,#ff3fc7,#9d4dff,#ff9ee9);
+    background-size:300% 300%;
+    animation:
+    borderMove 4s infinite,
+    cardFloat 3s infinite ease-in-out;
+    box-shadow:0 0 25px #bb4cff;
+}
+
+.photoCard:nth-child(2){
+    animation-delay:.5s;
+}
+
+.photoCard:nth-child(3){
+    animation-delay:1s;
+}
+
+.photoCard img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+@keyframes borderMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+@keyframes cardFloat{
+    50%{
+        transform:translateY(-15px) rotate(2deg);
+    }
+}
+
+/* =========================
+   CAKE
+========================= */
+
+#cake{
+    flex-direction:column;
+}
+
+.cake{
+    font-size:150px;
+    animation:cakeFloat 2s infinite ease-in-out;
+    cursor:pointer;
+}
+
+@keyframes cakeFloat{
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+.candleText{
+    margin-top:20px;
+    color:#ffd9f7;
+}
+
+.candlesOff .cake{
+    filter:brightness(.6);
+}
+
+/* =========================
+   FLASH PHOTOS
+========================= */
+
+.flashPhoto{
+    position:fixed;
+    inset:0;
+    background:white;
+    z-index:100;
+    opacity:0;
+    pointer-events:none;
+}
+
+.flashPhoto.show{
+    animation:flash .8s;
+}
+
+@keyframes flash{
+    0%{opacity:0;}
+    30%{opacity:1;}
+    100%{opacity:0;}
+}
+
+/* =========================
+   CHILDHOOD
+========================= */
+
+#childhood{
+    flex-direction:column;
+}
+
+.timeline{
+    max-width:850px;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.memory{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:#ffffff0d;
+    padding:15px;
+    border-radius:20px;
+    border:1px solid #ff9bea55;
+    box-shadow:0 0 20px #8c36aa55;
+    animation:memorySlide 1s;
+}
+
+.memory img{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.memory p{
+    color:#ffdafa;
+    font-size:18px;
+}
+
+@keyframes memorySlide{
+    from{
+        opacity:0;
+        transform:translateX(-100px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+/* =========================
+   FRIENDS
+========================= */
+
+#friends{
+    flex-direction:column;
+}
+
+.friendGrid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.friendCard{
+    width:200px;
+    padding:12px;
+    background:#ffffff12;
+    border-radius:25px;
+    border:1px solid #ff91e855;
+    animation:friendAnimation 3s infinite alternate;
+}
+
+.friendCard:nth-child(2){
+    animation-delay:.5s;
+}
+
+.friendCard:nth-child(3){
+    animation-delay:1s;
+}
+
+.friendCard img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+.friendCard p{
+    margin-top:10px;
+    color:#ffc9f2;
+}
+
+@keyframes friendAnimation{
+    to{
+        transform:translateY(-15px) rotate(2deg);
+        box-shadow:0 0 30px #d74cff;
+    }
+}
+
+/* =========================
+   QUOTES
+========================= */
+
+#quotes{
+    flex-direction:column;
+}
+
+.quoteBox{
+    max-width:700px;
+    min-height:150px;
+    padding:35px;
+    border-radius:25px;
+    background:#ffffff0d;
+    border:1px solid #ff9bea66;
+    box-shadow:0 0 35px #a938cc66;
+}
+
+.quote{
+    font-size:25px;
+    line-height:1.6;
+    color:#ffe3fa;
+}
+
+.typing{
+    border-right:3px solid #ff75dc;
+    animation:cursor .7s infinite;
+}
+
+@keyframes cursor{
+    50%{border-color:transparent;}
+}
+
+/* =========================
+   BIKE
+========================= */
+
+#bike{
+    flex-direction:column;
+}
+
+.bikePhoto{
+    width:min(90vw,500px);
+    height:330px;
+    object-fit:cover;
+    border-radius:25px;
+    border:5px solid #d34cff;
     box-shadow:
+    0 0 20px #ff4ecd,
+    0 0 60px #9d4dff;
+    animation:bikeZoom 4s infinite alternate;
+}
+
+@keyframes bikeZoom{
+    to{
+        transform:scale(1.05);
+    }
+}
+
+/* =========================
+   FINAL
+========================= */
+
+#final{
+    flex-direction:column;
+}
+
+.finalTitle{
+    font-size:clamp(40px,10vw,80px);
+    color:#fff;
+    animation:finalGlow 2s infinite alternate;
+}
+
+@keyframes finalGlow{
+    from{
+        text-shadow:0 0 10px #ff4ecd;
+    }
+    to{
+        text-shadow:
         0 0 20px #ff4ecd,
-        0 0 45px #a13cff,
-        0 0 80px rgba(216,108,255,0.8);
-}
-
-.photo-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid #21002d;
-    animation: photoZoom 3s ease-in-out infinite;
-}
-
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
+        0 0 50px #9d4dff,
+        0 0 90px #ff8eea;
     }
 }
 
-@keyframes photoRotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+.finalDate{
+    margin-top:25px;
+    font-size:45px;
+    color:#ffb6ed;
 }
 
-@keyframes photoZoom {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
+.finalMessage{
+    margin-top:25px;
+    font-size:20px;
+    color:#ffe1fa;
 }
 
-/* Birthday Message */
-.message {
-    color: #ffe4ff;
-    margin-top: 25px;
-    font-size: 17px;
-    line-height: 1.5;
+/* =========================
+   NEXT BUTTON
+========================= */
+
+.nextBtn{
+    margin-top:30px;
+    padding:13px 30px;
+    border:0;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff3fc7,#8f4dff);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 20px #b94cff;
 }
 
-/* Floating Hearts */
-.heart {
-    position: fixed;
-    bottom: -50px;
-    font-size: 25px;
-    animation: floatHeart 7s linear infinite;
-    z-index: 5;
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:fixed;
+    top:-20px;
+    width:10px;
+    height:18px;
+    z-index:200;
+    animation:confettiFall 3s linear forwards;
 }
 
-.heart:nth-child(1) {
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.heart:nth-child(2) {
-    left: 25%;
-    animation-delay: 2s;
-}
-
-.heart:nth-child(3) {
-    left: 45%;
-    animation-delay: 4s;
-}
-
-.heart:nth-child(4) {
-    left: 70%;
-    animation-delay: 1s;
-}
-
-.heart:nth-child(5) {
-    left: 90%;
-    animation-delay: 3s;
-}
-
-@keyframes floatHeart {
-    0% {
-        transform: translateY(0) scale(0.5) rotate(0deg);
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
+@keyframes confettiFall{
+    to{
         transform:
-        translateY(-110vh)
-        scale(1.4)
-        rotate(30deg);
-        opacity: 0;
+        translateY(110vh)
+        rotate(720deg);
+        opacity:0;
     }
 }
 
-/* Glowing Particles */
-.particle {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: white;
-    box-shadow: 0 0 15px #ff8eea;
-    animation: particleMove 5s ease-in-out infinite;
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+    font-size:28px;
+    z-index:50;
+    pointer-events:none;
+    animation:heartUp 6s linear forwards;
 }
 
-.p1 {
-    top: 15%;
-    left: 15%;
-}
-
-.p2 {
-    top: 30%;
-    left: 85%;
-    animation-delay: 1s;
-}
-
-.p3 {
-    top: 75%;
-    left: 20%;
-    animation-delay: 2s;
-}
-
-.p4 {
-    top: 80%;
-    left: 80%;
-    animation-delay: 3s;
-}
-
-.p5 {
-    top: 10%;
-    left: 50%;
-    animation-delay: 4s;
-}
-
-@keyframes particleMove {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.3;
+@keyframes heartUp{
+    0%{
+        transform:translateY(0) scale(.5);
+        opacity:0;
     }
 
-    50% {
-        transform: translateY(-40px) scale(2);
-        opacity: 1;
+    20%{
+        opacity:1;
     }
+
+    100%{
+        transform:translateY(-110vh) scale(1.5) rotate(30deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .photoCard{
+        width:140px;
+        height:190px;
+    }
+
+    .memory{
+        flex-direction:column;
+    }
+
+    .memory img{
+        width:200px;
+        height:180px;
+    }
+
+    .friendCard{
+        width:145px;
+    }
+
+    .friendCard img{
+        height:150px;
+    }
+
+    .sectionTitle{
+        font-size:30px;
+    }
+
+    .cake{
+        font-size:110px;
+    }
+
 }
 </style>
 </head>
 
+
 <body>
 
-<!-- 🎂 Birthday Card -->
-<div class="birthday-card">
 
-    <h1>🎂 Happy Birthday ❤️</h1>
+<!-- =========================
+     OPENING
+========================= -->
 
-    <!-- 📸 YOUR PHOTO -->
-    <div class="photo-container">
-        <img src="photo.jpg" alt="Birthday Photo">
-    </div>
+<section id="opening" class="active">
 
-    <p class="message">
-        ✨ Wishing you endless happiness,<br>
-        beautiful memories & lots of love! 💜
-    </p>
+<div class="bg"></div>
+
+<div class="date">
+15.09.2007
+</div>
+
+<p class="openText">
+✨ A Special Day Was Born ✨
+</p>
+
+<button class="startBtn" onclick="openGift()">
+🎁 OPEN THE SURPRISE
+</button>
+
+</section>
+
+
+<!-- =========================
+     GIFT
+========================= -->
+
+<section id="gift">
+
+<div class="bg"></div>
+
+<div id="giftBox" class="giftBox" onclick="openBirthday()">
+🎁
+</div>
+
+<h1 class="giftTitle">
+Tap The Gift 🎁
+</h1>
+
+</section>
+
+
+<!-- =========================
+     PHOTO REVEAL
+========================= -->
+
+<section id="photos">
+
+<div class="bg"></div>
+
+<h1 class="sectionTitle">
+📸 Beautiful Memories
+</h1>
+
+<div class="photoGrid">
+
+<div class="photoCard">
+<img src="./photo.jpj.jpeg">
+</div>
+
+<div class="photoCard">
+<img src="./photo2.jpg">
+</div>
+
+<div class="photoCard">
+<img src="./photo3.jpg">
+</div>
 
 </div>
 
-<!-- ❤️ Floating Hearts -->
-<div class="heart">❤️</div>
-<div class="heart">💜</div>
-<div class="heart">💗</div>
-<div class="heart">💖</div>
-<div class="heart">❤️</div>
+<p style="margin-top:25px;color:#ffdafa;">
+✨ Every picture has a story ❤️
+</p>
 
-<!-- ✨ Glowing Particles -->
-<div class="particle p1"></div>
-<div class="particle p2"></div>
-<div class="particle p3"></div>
-<div class="particle p4"></div>
-<div class="particle p5"></div>
+<button class="nextBtn" onclick="showSection('cake')">
+Next → 🎂
+</button>
+
+</section>
+
+
+<!-- =========================
+     CAKE
+========================= -->
+
+<section id="cake">
+
+<div class="bg"></div>
+
+<h1 class="sectionTitle">
+🎂 Make A Wish!
+</h1>
+
+<div id="cakeEmoji" class="cake" onclick="turnOffCandle()">
+🎂
+</div>
+
+<p class="candleText">
+🔥 Candles are ON<br>
+Tap the cake to blow them out!
+</p>
+
+</section>
+
+
+<!-- =========================
+     FLASH
+========================= -->
+
+<div id="flash" class="flashPhoto"></div>
+
+
+<!-- =========================
+     CHILDHOOD
+========================= -->
+
+<section id="childhood">
+
+<div class="bg"></div>
+
+<h1 class="sectionTitle">
+👶 Childhood Memories
+</h1>
+
+<div class="timeline">
+
+<div class="memory">
+
+<img src="./childhood1.jpg">
+
+<p>
+👶 Little moments,<br>
+big memories.<br>
+✨ The beginning of a beautiful journey.
+</p>
+
+</div>
+
+<div class="memory">
+
+<img src="./childhood2.jpg">
+
+<p>
+🌸 Childhood days<br>
+that will always stay special.
+</p>
+
+</div>
+
+<div class="memory">
+
+<img src="./childhood3.jpg">
+
+<p>
+❤️ Those innocent smiles<br>
+and unforgettable memories.
+</p>
+
+</div>
+
+</div>
+
+<button class="nextBtn" onclick="showSection('friends')">
+Next → 👬
+</button>
+
+</section>
+
+
+<!-- =========================
+     FRIENDS
+========================= -->
+
+<section id="friends">
+
+<div class="bg"></div>
+
+<h1 class="sectionTitle">
+👬 Friends Forever
+</h1>
+
+<div class="friendGrid">
+
+<div class="friendCard">
+
+<img src="./friend1.jpg">
+
+<p>
+❤️ Best Memories
+</p>
+
+</div>
+
+
+<div class="friendCard">
+
+<img src="./friend2.jpg">
+
+<p>
+💜 Crazy Moments
+</p>
+
+</div>
+
+
+<div class="friendCard">
+
+<img src="./friend3.jpg">
+
+<p>
+😂 Unlimited Fun
+</p>
+
+</div>
+
+</div>
+
+<button class="nextBtn" onclick="showSection('quotes')">
+Next → 💬
+</button>
+
+</section>
+
+
+<!-- =========================
+     QUOTES
+========================= -->
+
+<section id="quotes">
+
+<div class="bg"></div>
+
+<h1 class="sectionTitle">
+💬 Birthday Quotes
+</h1>
+
+<div class="quoteBox">
+
+<p id="quoteText" class="quote typing"></p>
+
+</div>
+
+<button class="nextBtn" onclick="showSection('bike')">
+Next → 🏍️
+</button>
+
+</section>
+
+
+<!-- =========================
+     BIKE
+========================= -->
+
+<section id="bike">
+
+<div class="bg"></div>
+
+<h1 class="sectionTitle">
+🏍️ Favorite Memories
+</h1>
+
+<img
+class="bikePhoto"
+src="./bike.jpg"
+alt="Bike Memory"
+>
+
+<p style="margin-top:25px;color:#ffdafa;">
+🏍️ Ride. Smile. Create Memories. ❤️
+</p>
+
+<button class="nextBtn" onclick="showSection('final')">
+Final Surprise → 💜
+</button>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section id="final">
+
+<div class="bg"></div>
+
+<h1 class="finalTitle">
+🎉 HAPPY BIRTHDAY ❤️
+</h1>
+
+<div class="finalDate">
+15.09.2007
+</div>
+
+<p class="finalMessage">
+
+✨ May your life be filled with<br>
+happiness, success, love & beautiful memories. 💜
+
+<br><br>
+
+🎂 Have an Amazing Birthday! ❤️
+
+</p>
+
+</section>
+
+
+<script>
+
+/* =========================
+   SECTION NAVIGATION
+========================= */
+
+function showSection(id){
+
+    document.querySelectorAll("section").forEach(section=>{
+        section.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   OPEN GIFT
+========================= */
+
+function openGift(){
+
+    showSection("gift");
+
+}
+
+
+/* =========================
+   BIRTHDAY GIFT OPEN
+========================= */
+
+function openBirthday(){
+
+    const gift =
+    document.getElementById("giftBox");
+
+    gift.classList.add("open");
+
+    createConfetti();
+
+    createHearts();
+
+    setTimeout(()=>{
+
+        showSection("photos");
+
+    },1200);
+
+}
+
+
+/* =========================
+   CANDLE OFF
+========================= */
+
+function turnOffCandle(){
+
+    const cake =
+    document.getElementById("cakeEmoji");
+
+    cake.innerHTML="🎂";
+
+    cake.parentElement.classList.add("candlesOff");
+
+    const flash =
+    document.getElementById("flash");
+
+    flash.classList.add("show");
+
+    createConfetti();
+
+    createHearts();
+
+    setTimeout(()=>{
+
+        flash.classList.remove("show");
+
+        showSection("childhood");
+
+    },1000);
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti(){
+
+    for(let i=0;i<80;i++){
+
+        const confetti =
+        document.createElement("div");
+
+        confetti.className="confetti";
+
+        confetti.style.left =
+        Math.random()*100+"vw";
+
+        confetti.style.background =
+        randomColor();
+
+        confetti.style.animationDuration =
+        (2+Math.random()*3)+"s";
+
+        confetti.style.transform =
+        `rotate(${Math.random()*360}deg)`;
+
+        document.body.appendChild(confetti);
+
+        setTimeout(()=>{
+            confetti.remove();
+        },5000);
+
+    }
+
+}
+
+
+/* =========================
+   HEARTS
+========================= */
+
+function createHearts(){
+
+    for(let i=0;i<20;i++){
+
+        const heart =
+        document.createElement("div");
+
+        heart.className="heart";
+
+        const hearts=[
+            "❤️",
+            "💜",
+            "💗",
+            "💖",
+            "💕"
+        ];
+
+        heart.innerHTML =
+        hearts[Math.floor(Math.random()*hearts.length)];
+
+        heart.style.left =
+        Math.random()*100+"vw";
+
+        heart.style.animationDelay =
+        Math.random()*2+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },7000);
+
+    }
+
+}
+
+
+/* =========================
+   RANDOM COLORS
+========================= */
+
+function randomColor(){
+
+    const colors=[
+        "#ff4ecd",
+        "#9d4dff",
+        "#ffdd55",
+        "#55eaff",
+        "#ff6b6b",
+        "#ffffff"
+    ];
+
+    return colors[
+        Math.floor(Math.random()*colors.length)
+    ];
+
+}
+
+
+/* =========================
+   QUOTE TYPING
+========================= */
+
+const quotes=[
+
+"✨ May every dream you have come true. ❤️",
+
+"💜 Keep smiling and keep shining forever.",
+
+"🎂 Another year, another beautiful chapter.",
+
+"🌸 Your memories are the treasures of life.",
+
+"❤️ Wishing you endless happiness and success."
+
+];
+
+let quoteIndex=0;
+
+function typeQuote(){
+
+    const element =
+    document.getElementById("quoteText");
+
+    const text =
+    quotes[quoteIndex];
+
+    let index=0;
+
+    element.innerHTML="";
+
+    const typing =
+    setInterval(()=>{
+
+        element.innerHTML +=
+        text.charAt(index);
+
+        index++;
+
+        if(index>=text.length){
+
+            clearInterval(typing);
+
+        }
+
+    },55);
+
+    quoteIndex++;
+
+    if(quoteIndex>=quotes.length){
+        quoteIndex=0;
+    }
+
+}
+
+
+/* =========================
+   START QUOTES WHEN SECTION OPENS
+========================= */
+
+document.querySelector(
+    'button[onclick="showSection(\'quotes\')"]'
+);
+
+
+/* =========================
+   RANDOM BACKGROUND STARS
+========================= */
+
+for(let i=0;i<45;i++){
+
+    const star =
+    document.createElement("div");
+
+    star.className="star";
+
+    star.style.left =
+    Math.random()*100+"vw";
+
+    star.style.top =
+    Math.random()*100+"vh";
+
+    star.style.animationDelay =
+    Math.random()*4+"s";
+
+    document.body.appendChild(star);
+
+}
+
+
+/* =========================
+   START QUOTE OBSERVER
+========================= */
+
+const observer =
+new MutationObserver(()=>{
+
+    const quoteSection =
+    document.getElementById("quotes");
+
+    if(
+        quoteSection.classList.contains("active")
+    ){
+
+        typeQuote();
+
+    }
+
+});
+
+observer.observe(
+    document.body,
+    {
+        attributes:true,
+        subtree:true,
+        attributeFilter:["class"]
+    }
+);
+
+</script>
 
 </body>
 </html>
