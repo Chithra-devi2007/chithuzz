@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make a Wish — Elango's Birthday</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .cake-scene{position:relative;width:220px;height:240px;margin:20px auto 6px;}
+  .candle{
+    position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:10px;height:38px;
+    background:repeating-linear-gradient(180deg, #fff 0 6px, var(--accent-lilac) 6px 12px);
+    border-radius:3px;
+    z-index:3;
+  }
+  .flame{
+    position:absolute;top:-22px;left:50%;transform:translateX(-50%);
+    width:14px;height:22px;
+    background:radial-gradient(circle at 50% 30%, #fff3b0, #ffb347 60%, #ff6b35);
+    border-radius:50% 50% 50% 50% / 65% 65% 35% 35%;
+    box-shadow:0 0 18px 4px rgba(255,179,71,0.7);
+    animation:flicker 0.35s ease-in-out infinite alternate;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  @keyframes flicker{
+    0%{transform:translateX(-50%) scaleY(1) rotate(-2deg);}
+    100%{transform:translateX(-50%) scaleY(1.12) rotate(2deg);}
+  }
+  .flame.out{opacity:0;transform:translateX(-50%) scaleY(0.2);}
+  .smoke{
+    position:absolute;top:-24px;left:50%;transform:translateX(-50%);
+    width:6px;height:6px;border-radius:50%;
+    background:rgba(255,255,255,0.5);
+    opacity:0;
+  }
+  .tier{
+    position:absolute;left:50%;transform:translateX(-50%);
+    border-radius:14px;
+    background:linear-gradient(180deg, #ffc1d9, #ff8fb3);
+    box-shadow:inset 0 -8px 0 rgba(255,255,255,0.25), 0 12px 24px rgba(255,111,165,0.25);
+  }
+  .tier1{top:38px;width:120px;height:70px;}
+  .tier2{top:100px;width:170px;height:80px;}
+  .tier3{top:172px;width:220px;height:60px;border-radius:14px 14px 24px 24px;background:linear-gradient(180deg,#ffd6e6,#ff9fc0);}
+  .sprinkle{position:absolute;width:5px;height:9px;border-radius:3px;}
+  .plate{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:250px;height:14px;border-radius:50%;background:rgba(255,255,255,0.12);}
+  .wish-text{margin-top:26px;font-family:'Fredoka';font-size:20px;color:var(--accent-gold);min-height:28px;}
+</style>
+</head>
+<body>
+<div id="balloon-layer"></div>
+
+<div class="page">
+  <div class="eyebrow">The Big Moment</div>
+  <h1 class="headline" style="font-size:34px;">Make a Wish 🎂</h1>
+  <p class="subtext">Tap the candle to blow it out.</p>
+
+  <div class="cake-scene" id="cakeScene">
+    <div class="candle"></div>
+    <div class="flame" id="flame" onclick="blowCandle()"></div>
+    <div class="tier tier1" id="tier1"></div>
+    <div class="tier tier2" id="tier2"></div>
+    <div class="tier tier3" id="tier3"></div>
+    <div class="plate"></div>
+  </div>
+
+  <div class="wish-text" id="wishText"></div>
+
+  <a href="letter.html" class="btn" id="toLetter" style="display:none;">Read Your Letter →</a>
+</div>
+
+<div class="nav-dots"><span></span><span></span><span></span><span class="active"></span><span></span></div>
+
+<script src="script.js"></script>
+<script>
+  // scatter sprinkles on the tiers
+  const sprinkleColors = ['#fff','#ffd166','#b98ee8','#8ecae6','#ff6fa5'];
+  ['tier1','tier2','tier3'].forEach(id=>{
+    const t = document.getElementById(id);
+    const count = id==='tier3'?10:7;
+    for(let i=0;i<count;i++){
+      const s = document.createElement('div');
+      s.className='sprinkle';
+      s.style.background = sprinkleColors[Math.floor(Math.random()*sprinkleColors.length)];
+      s.style.left = (8 + Math.random()*84) + '%';
+      s.style.top = (18 + Math.random()*50) + '%';
+      s.style.transform = `rotate(${Math.random()*360}deg)`;
+      t.appendChild(s);
+    }
+  });
+
+  let blown = false;
+  function blowCandle(){
+    if(blown) return;
+    blown = true;
+    document.getElementById('flame').classList.add('out');
+    document.getElementById('wishText').textContent = 'Wish made — here\'s to it coming true 💫';
+    burstConfetti();
+    setTimeout(()=>{
+      document.getElementById('toLetter').style.display='inline-block';
+    }, 500);
+  }
+</script>
+</body>
+</html>
