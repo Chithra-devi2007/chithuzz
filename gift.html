@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Gift — Elango's Birthday</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .gift-box{
+    width:170px;height:130px;
+    margin:30px auto 10px;
+    position:relative;
+    cursor:pointer;
+  }
+  .box-base{
+    position:absolute;bottom:0;width:100%;height:90px;
+    background:linear-gradient(135deg, var(--accent-pink), #c8437f);
+    border-radius:8px;
+    box-shadow:0 20px 40px rgba(255,111,165,0.3);
+  }
+  .box-lid{
+    position:absolute;top:14px;width:100%;height:34px;
+    background:linear-gradient(135deg, var(--accent-lilac), #7a4fc4);
+    border-radius:8px;
+    transition:transform .6s cubic-bezier(.3,1.4,.5,1), opacity .6s ease;
+    transform-origin:top center;
+  }
+  .ribbon-v{position:absolute;top:0;left:50%;width:16px;height:130px;transform:translateX(-50%);background:var(--accent-gold);}
+  .ribbon-h{position:absolute;top:14px;left:0;width:100%;height:16px;background:var(--accent-gold);}
+  .gift-box.open .box-lid{transform:translateY(-90px) rotate(-25deg);opacity:0;}
+  .hint{color:var(--text-muted);font-size:14px;margin-top:4px;}
+
+  .hearts-wrap{
+    display:flex;gap:22px;flex-wrap:wrap;justify-content:center;
+    margin-top:44px;
+    max-width:760px;
+  }
+  .heart-card{
+    width:210px;height:230px;
+    perspective:1200px;
+    opacity:0;
+    transform:translateY(24px) scale(0.85);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .heart-card.show{opacity:1;transform:translateY(0) scale(1);}
+  .heart-inner{
+    position:relative;width:100%;height:100%;
+    transform-style:preserve-3d;
+    transition:transform .7s cubic-bezier(.3,1.2,.4,1);
+  }
+  .heart-card.flipped .heart-inner{transform:rotateY(180deg);}
+  .heart-face{
+    position:absolute;inset:0;
+    backface-visibility:hidden;
+    border-radius:var(--radius-md);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:18px;
+    box-shadow:var(--shadow-glow);
+    border:1px solid rgba(255,255,255,0.12);
+  }
+  .heart-front{background:linear-gradient(160deg, rgba(255,111,165,0.18), rgba(185,142,232,0.12));}
+  .heart-back{
+    background:var(--bg-panel);
+    transform:rotateY(180deg);
+    font-size:15px;
+    line-height:1.5;
+  }
+  .heart-icon{font-size:56px;margin-bottom:10px;}
+  .heart-label{font-family:'Fredoka';font-size:15px;color:var(--accent-gold);}
+  .tap-hint{font-size:11px;color:var(--text-muted);margin-top:8px;}
+</style>
+</head>
+<body>
+<div id="balloon-layer"></div>
+
+<div class="page">
+  <div class="eyebrow">A Little Something</div>
+  <h1 class="headline" style="font-size:34px;">Open Your Gift 🎁</h1>
+  <p class="subtext">Tap the box to unwrap it.</p>
+
+  <div class="gift-box" id="giftBox" onclick="openGift()">
+    <div class="box-lid">
+      <div class="ribbon-h"></div>
+    </div>
+    <div class="box-base">
+      <div class="ribbon-v"></div>
+    </div>
+  </div>
+  <div class="hint" id="giftHint">tap to unwrap</div>
+
+  <div class="hearts-wrap" id="heartsWrap">
+    <div class="heart-card" id="h1" onclick="flipHeart('h1')">
+      <div class="heart-inner">
+        <div class="heart-face heart-front">
+          <div class="heart-icon">❤️</div>
+          <div class="heart-label">Heart One</div>
+          <div class="tap-hint">tap to reveal</div>
+        </div>
+        <div class="heart-face heart-back">
+          <div style="font-size:34px;margin-bottom:8px;">🏍️</div>
+          <div><strong>The Bike Theme</strong><br>Every ride with you turns into a memory. Here's to many more roads ahead, engine roaring, wind in your hair.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="heart-card" id="h2" onclick="flipHeart('h2')">
+      <div class="heart-inner">
+        <div class="heart-face heart-front">
+          <div class="heart-icon">❤️</div>
+          <div class="heart-label">Heart Two</div>
+          <div class="tap-hint">tap to reveal</div>
+        </div>
+        <div class="heart-face heart-back">
+          <div style="font-size:34px;margin-bottom:8px;">⚡</div>
+          <div><strong>The Electrician Theme</strong><br>You light up every room you walk into — literally and otherwise. Wishing you a current full of good energy this year!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="heart-card" id="h3" onclick="flipHeart('h3')">
+      <div class="heart-inner">
+        <div class="heart-face heart-front">
+          <div class="heart-icon">❤️</div>
+          <div class="heart-label">Heart Three</div>
+          <div class="tap-hint">tap to reveal</div>
+        </div>
+        <div class="heart-face heart-back">
+          <div style="font-size:30px;margin-bottom:8px;">🏍️💨</div>
+          <div><strong>Born to Ride</strong><br>That's just who you are. Free spirited, always chasing the next road. Happy Birthday!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="cake.html" class="btn" id="toCake" style="display:none;">Time for Cake →</a>
+</div>
+
+<div class="nav-dots"><span></span><span></span><span class="active"></span><span></span><span></span></div>
+
+<script src="script.js"></script>
+<script>
+  function openGift(){
+    const box = document.getElementById('giftBox');
+    if(box.classList.contains('open')) return;
+    box.classList.add('open');
+    document.getElementById('giftHint').style.display='none';
+    burstConfetti();
+    setTimeout(()=>{
+      ['h1','h2','h3'].forEach((id,i)=>{
+        setTimeout(()=>document.getElementById(id).classList.add('show'), i*220);
+      });
+      document.getElementById('toCake').style.display='inline-block';
+    }, 400);
+  }
+  function flipHeart(id){
+    document.getElementById(id).classList.toggle('flipped');
+  }
+</script>
+</body>
+</html>
