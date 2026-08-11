@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Surprise for Elango 🎉</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .stage{width:100%;max-width:420px;}
+  .lock-icon{font-size:44px;margin-bottom:6px;}
+  .field{
+    width:100%;padding:14px 18px;border-radius:999px;border:1.5px solid rgba(185,142,232,0.4);
+    background:rgba(255,255,255,0.06);color:var(--text-light);font-family:'Quicksand';font-size:16px;
+    outline:none;text-align:center;letter-spacing:1px;
+  }
+  .field::placeholder{color:var(--text-muted);}
+  .error{color:var(--accent-pink-soft);font-size:14px;margin-top:10px;min-height:18px;}
+  .quiz-card{
+    background:var(--bg-panel);border-radius:var(--radius-lg);padding:32px 26px;
+    box-shadow:var(--shadow-glow);border:1px solid rgba(185,142,232,0.25);
+  }
+  .q-text{font-size:19px;font-weight:600;margin-bottom:18px;}
+  .opt{
+    display:block;width:100%;text-align:left;padding:12px 16px;margin:8px 0;border-radius:14px;
+    background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--text-light);
+    cursor:pointer;font-family:'Quicksand';font-size:15px;transition:.2s;
+  }
+  .opt:hover{background:rgba(185,142,232,0.18);}
+  .opt.correct{background:rgba(120,220,150,0.25);border-color:#78dc96;}
+  .opt.wrong{background:rgba(255,111,145,0.25);border-color:var(--accent-pink);}
+  .progress{display:flex;gap:6px;justify-content:center;margin-bottom:22px;}
+  .progress span{width:26px;height:5px;border-radius:3px;background:rgba(255,255,255,0.15);}
+  .progress span.done{background:var(--accent-pink);}
+
+  /* chase animation stage */
+  #chase-stage{display:none;width:100%;height:70vh;position:relative;overflow:hidden;}
+  .chase-caption{font-family:'Fredoka';font-size:26px;margin-bottom:14px;}
+  .track{position:relative;width:100%;height:180px;margin-top:40px;}
+  .critter{position:absolute;bottom:0;font-size:64px;animation-timing-function:linear;animation-fill-mode:forwards;}
+  #mouse{animation:runAcross 2.6s forwards;left:-80px;}
+  #cat{animation:runAcross2 2.6s forwards; left:-180px;}
+  @keyframes runAcross{ to{ left:110%; transform:translateY(0) rotate(0deg);} }
+  @keyframes runAcross2{ to{ left:110%; }}
+  .dust{position:absolute;bottom:6px;width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.5);animation:dustPop 0.6s ease-out infinite;}
+  @keyframes dustPop{0%{opacity:0.6;transform:scale(0.4);}100%{opacity:0;transform:scale(1.6) translateY(-10px);}}
+  .ground{position:absolute;bottom:0;width:100%;height:2px;background:rgba(255,255,255,0.15);}
+</style>
+</head>
+<body>
+<div id="balloon-layer"></div>
+
+<div class="page" id="page-lock">
+  <div class="stage">
+    <div class="lock-icon">🔒</div>
+    <div class="eyebrow">Private Invitation</div>
+    <h1 class="headline" style="font-size:30px;">Something's waiting for you...</h1>
+    <p class="subtext">Enter the secret word to unlock it 💜</p>
+    <div style="margin-top:26px;display:flex;flex-direction:column;gap:14px;align-items:center;">
+      <input class="field" id="pw" type="text" placeholder="Enter password" autocomplete="off">
+      <button class="btn" onclick="checkPassword()">Unlock</button>
+      <div class="error" id="pw-error"></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-quiz" style="display:none;">
+  <div class="stage">
+    <div class="eyebrow">One Quick Quiz</div>
+    <h1 class="headline" style="font-size:26px;margin-bottom:22px;">Prove you know the birthday star 🎂</h1>
+    <div class="progress" id="progress"></div>
+    <div class="quiz-card">
+      <div class="q-text" id="q-text"></div>
+      <div id="q-options"></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="chase-stage">
+  <div class="chase-caption">Chaseee!! 🐱💨🐭</div>
+  <p class="subtext">Someone's excited for the party...</p>
+  <div class="track">
+    <div class="ground"></div>
+    <div class="critter" id="mouse">🐭</div>
+    <div class="critter" id="cat">🐱</div>
+  </div>
+</div>
+
+<div class="nav-dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+
+<script src="script.js"></script>
+<script>
+  // ---- EDIT THESE TWO THINGS FOR YOUR FRIEND ----
+  const SECRET_PASSWORD = "ELANGO2026"; // change to whatever you like
+  const QUIZ = [
+    { q:"What's Elango's favourite ride?", options:["Bicycle","Bike","Auto","Bus"], answer:1 },
+    { q:"What best describes Elango's vibe?", options:["Quiet & shy","Born to ride 🏍️","Sleepyhead","Bookworm"], answer:1 },
+    { q:"Best friend of Elango since childhood?", options:["A stranger","Chithra 💜","Nobody","A random guy"], answer:1 },
+  ];
+  // -------------------------------------------------
+
+  let qIndex = 0, qScore = 0;
+
+  function checkPassword(){
+    const val = document.getElementById('pw').value.trim();
+    if(val.toUpperCase() === SECRET_PASSWORD.toUpperCase()){
+      document.getElementById('page-lock').style.display='none';
+      document.getElementById('page-quiz').style.display='flex';
+      buildProgress();
+      renderQuestion();
+    } else {
+      document.getElementById('pw-error').textContent = "Hmm, that's not it — try again 💭";
+    }
+  }
+  document.getElementById('pw').addEventListener('keydown', e=>{ if(e.key==='Enter') checkPassword(); });
+
+  function buildProgress(){
+    const p = document.getElementById('progress');
+    p.innerHTML = QUIZ.map((_,i)=>`<span id="dot${i}"></span>`).join('');
+  }
+
+  function renderQuestion(){
+    const item = QUIZ[qIndex];
+    document.getElementById('q-text').textContent = item.q;
+    const optsWrap = document.getElementById('q-options');
+    optsWrap.innerHTML = '';
+    item.options.forEach((opt,i)=>{
+      const btn = document.createElement('button');
+      btn.className='opt';
+      btn.textContent = opt;
+      btn.onclick = ()=>selectOption(i, btn);
+      optsWrap.appendChild(btn);
+    });
+  }
+
+  function selectOption(i, btn){
+    const item = QUIZ[qIndex];
+    const allOpts = document.querySelectorAll('.opt');
+    allOpts.forEach(o=>o.style.pointerEvents='none');
+    if(i === item.answer){
+      btn.classList.add('correct');
+      qScore++;
+    } else {
+      btn.classList.add('wrong');
+      allOpts[item.answer].classList.add('correct');
+    }
+    document.getElementById(`dot${qIndex}`).classList.add('done');
+    setTimeout(()=>{
+      qIndex++;
+      if(qIndex < QUIZ.length){
+        renderQuestion();
+      } else {
+        document.getElementById('page-quiz').style.display='none';
+        playChase();
+      }
+    }, 900);
+  }
+
+  function playChase(){
+    const stage = document.getElementById('chase-stage');
+    stage.style.display='flex';
+    stage.style.flexDirection='column';
+    stage.style.alignItems='center';
+    stage.style.justifyContent='center';
+    for(let i=0;i<5;i++){
+      const d = document.createElement('div');
+      d.className='dust';
+      d.style.left = (10 + i*15) + '%';
+      d.style.animationDelay = (i*0.15)+'s';
+      document.querySelector('.track').appendChild(d);
+    }
+    setTimeout(()=>{ window.location.href = 'moments.html'; }, 3000);
+  }
+</script>
+</body>
+</html>
